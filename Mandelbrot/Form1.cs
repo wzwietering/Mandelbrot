@@ -6,9 +6,9 @@ namespace Mandelbrot
 {
     public partial class Form1 : Form
     {
-        private float middleX = (float)-0.02;
-        private float middleY = (float)-0.05;
-        private float scale = (float)0.001;
+        private float middleX = (float)-1;
+        private float middleY = (float)-0.0;
+        private float scale = (float)0.005;
         private int max = 100;
 
         public Form1()
@@ -39,14 +39,7 @@ namespace Mandelbrot
 
                     int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY, max);
 
-                    if(mandelNumber % 2 == 0)
-                    {
-                        bitmap.SetPixel(y, x, Color.White);
-                    }
-                    else
-                    {
-                        bitmap.SetPixel(y, x, Color.Black);
-                    }
+                    bitmap.SetPixel(y, x, Color.FromArgb(mandelNumber, mandelNumber, 100, mandelNumber%10));
                 }
                 this.BackgroundImage = bitmap;
             }
