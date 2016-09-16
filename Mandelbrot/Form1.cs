@@ -6,9 +6,9 @@ namespace Mandelbrot
 {
     public partial class Form1 : Form
     {
-        private float middleX = 0;
-        private float middleY = 0;
-        private float scale = 2;
+        private float middleX = (float)-0.02;
+        private float middleY = (float)-0.05;
+        private float scale = (float)0.001;
         private int max = 100;
 
         public Form1()
@@ -34,10 +34,10 @@ namespace Mandelbrot
             {
                 for(int y = 0; y <= this.Height-1; y++)
                 {
-                    float coordinateX = x * ((float)2 / this.Width);
-                    float coordinateY = y * ((float)2 / this.Height);
+                    float coordinateX = x * scale + middleX;
+                    float coordinateY = y * scale + middleY;
 
-                    int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY);
+                    int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY, max);
 
                     if(mandelNumber % 2 == 0)
                     {

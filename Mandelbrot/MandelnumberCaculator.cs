@@ -14,7 +14,7 @@ namespace Mandelbrot
         /// <param name="a">Coordinate a</param>
         /// <param name="b">Coordinate b</param>
         /// <returns>The Mander number for the given coordinates on a plain.</returns>
-        public static int CalculateMandelNumber(float x, float y)
+        public static int CalculateMandelNumber(float x, float y, int max)
         {
             int mandelNumber = 0;
             double distance = 0;
@@ -22,7 +22,7 @@ namespace Mandelbrot
             float a = 0;
             float b = 0;
 
-            while (distance < 2 && mandelNumber < 100)
+            while (distance < 2 && mandelNumber < max)
             {
                 var newA = (a * a - b * b) + x;
                 var newB = 2 * a * b + y;
