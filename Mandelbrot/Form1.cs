@@ -15,6 +15,12 @@ namespace Mandelbrot
         public Form1()
         {
             InitializeComponent();
+
+            //Textbox voor het middelste x coördinaat
+            TextBox MiddleX = new TextBox();
+            MiddleX.Location = new Point(20, 50);
+            MiddleX.Size = new Size(100, 20);
+            this.Controls.Add(MiddleX);
         }
     }
 }
