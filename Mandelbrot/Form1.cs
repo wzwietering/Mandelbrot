@@ -15,10 +15,10 @@ namespace Mandelbrot
         {
             InitializeComponent();
 
-            CreateControl(20, 20, "Middelste x:");
-            CreateControl(20, 50, "Middelste y:");
-            CreateControl(300, 20, "Schaal:");
-            CreateControl(300, 50, "Max:");
+            CreateControl(20, 20, middleX, "Middelste x:");
+            CreateControl(20, 50, middleY, "Middelste y:");
+            CreateControl(300, 20, scale, "Schaal:");
+            CreateControl(300, 50, max, "Max:");
 
             var goButton = new Button() { Text = "Go!" };
             goButton.Click += CreateMandelbrotImage;
@@ -34,7 +34,7 @@ namespace Mandelbrot
             {
                 for(int y = 0; y <= this.Height-1; y++)
                 {
-                    float coordinateX = x * ((float)2 / this.Width) - ;
+                    float coordinateX = x * ((float)2 / this.Width);
                     float coordinateY = y * ((float)2 / this.Height);
 
                     int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY);
@@ -52,7 +52,7 @@ namespace Mandelbrot
             }
         }
 
-        private void CreateControl(int x, int y, string label)
+        private void CreateControl(int x, int y, float value, string label)
         {
             Label Description = new Label();
             Description.Text = label;
@@ -60,11 +60,17 @@ namespace Mandelbrot
             this.Controls.Add(Description);
 
             //Nummerbox
-            NumericUpDown NUP = new NumericUpDown();
-            NUP.Location = new Point(Description.Width + 20 + x, y);
-            NUP.Size = new Size(100, 20);
-            this.Controls.Add(NUP);
-            decimal middleXInput = NUP.Value;
+            TextBox ValueBox = new TextBox();
+            ValueBox.Location = new Point(Description.Width + 20 + x, y);
+            ValueBox.Size = new Size(100, 20);
+            ValueBox.Text = value.ToString();
+            this.Controls.Add(ValueBox);
+            ValueBox.TextChanged += ValueChange;
+        }
+
+        private void ValueChange(object sender, EventArgs e)
+        {
+
         }
     } 
 }
