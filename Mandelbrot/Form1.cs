@@ -16,11 +16,10 @@ namespace Mandelbrot
         {
             InitializeComponent();
 
-            //Textbox voor het middelste x coördinaat
-            TextBox MiddleX = new TextBox() ;
-            MiddleX.Location = new Point(20, 50);
-            MiddleX.Size = new Size(100, 20);
-            this.Controls.Add(MiddleX);
+            CreateControl(20, 20, "Middelste x:");
+            CreateControl(20, 50, "Middelste y:");
+            CreateControl(300, 20, "Schaal:");
+            CreateControl(300, 50, "Max:");
 
             var goButton = new Button() { Text = "Go!" };
             goButton.Click += Colour;
@@ -50,10 +49,6 @@ namespace Mandelbrot
                     }
                 }
             }
-            CreateControl(20, 20, "Middelste x:");
-            CreateControl(20, 50, "Middelste y:");
-            CreateControl(300, 20, "Schaal:");
-            CreateControl(300, 50, "Max:");
         }
 
         private void CreateControl(int x, int y, string label)
