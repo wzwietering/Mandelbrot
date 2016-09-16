@@ -16,16 +16,16 @@ namespace Mandelbrot
             CreateControl(300, 50, "Max:");
 
             var goButton = new Button() { Text = "Go!" };
-            goButton.Click += Colour;
+            goButton.Click += CreateMandelbrotImage;
             this.Controls.Add(goButton);
 
         }
 
-        private void Colour(object sender, EventArgs e)
+        private void CreateMandelbrotImage(object sender, EventArgs e)
         {
             var bitmap = new Bitmap(this.Height, this.Width);
-            var graphics = CreateGraphics();
-            for(int x = 0; x <= this.Width-1; x++)
+
+            for (int x = 0; x <= this.Width-1; x++)
             {
                 for(int y = 0; y <= this.Height-1; y++)
                 {
@@ -36,11 +36,11 @@ namespace Mandelbrot
 
                     if(mandelNumber % 2 == 0)
                     {
-                        bitmap.SetPixel(x, y, Color.White);
+                        bitmap.SetPixel(y, x, Color.White);
                     }
                     else
                     {
-                        bitmap.SetPixel(x, y, Color.Black);
+                        bitmap.SetPixel(y, x, Color.Black);
                     }
                 }
                 this.BackgroundImage = bitmap;
