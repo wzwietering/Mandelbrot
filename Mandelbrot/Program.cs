@@ -17,9 +17,6 @@ namespace Mandelbrot
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var MandelnumberCaculator = new MandelnumberCaculator(0.5, 0.8);
-            MandelnumberCaculator.CalculateMandelNumber(0, 0);
-
             Application.Run(new Form1());
         }
     }
