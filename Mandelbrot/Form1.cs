@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Mandelbrot
@@ -28,11 +22,12 @@ namespace Mandelbrot
         }
 
         private void Colour(object sender, EventArgs e)
-        { 
+        {
+            var bitmap = new Bitmap(this.Height, this.Width);
             var graphics = CreateGraphics();
-            for(int x = 0; x <= this.Width; x++)
+            for(int x = 0; x <= this.Width-1; x++)
             {
-                for(int y = 0; y <= this.Height; y++)
+                for(int y = 0; y <= this.Height-1; y++)
                 {
                     float coordinateX = x * ((float)2 / this.Width);
                     float coordinateY = y * ((float)2 / this.Height);
@@ -41,13 +36,14 @@ namespace Mandelbrot
 
                     if(mandelNumber % 2 == 0)
                     {
-                        graphics.FillRectangle(Brushes.Black, x, y, 1, 1); ;
+                        bitmap.SetPixel(x, y, Color.White);
                     }
                     else
                     {
-                        graphics.FillRectangle(Brushes.White, x, y, 1, 1);
+                        bitmap.SetPixel(x, y, Color.Black);
                     }
                 }
+                this.BackgroundImage = bitmap;
             }
         }
 
