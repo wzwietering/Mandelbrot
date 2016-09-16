@@ -6,6 +6,11 @@ namespace Mandelbrot
 {
     public partial class Form1 : Form
     {
+        private float middleX = 0;
+        private float middleY = 0;
+        private float scale = 2;
+        private int max = 100;
+
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +34,7 @@ namespace Mandelbrot
             {
                 for(int y = 0; y <= this.Height-1; y++)
                 {
-                    float coordinateX = x * ((float)2 / this.Width);
+                    float coordinateX = x * ((float)2 / this.Width) - ;
                     float coordinateY = y * ((float)2 / this.Height);
 
                     int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY);
