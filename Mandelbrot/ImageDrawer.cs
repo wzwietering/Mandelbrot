@@ -14,12 +14,16 @@ namespace Mandelbrot
         public double Scale { get; set; }
         public int Max { get; set; }
 
+        float colorscale;
+
         public ImageDrawer()
         {
             MiddleX = -1;
             MiddleY = -0.0;
-            Scale = 0.005;
+            Scale = 0.001;
             Max = 100;
+            colorscale = 255.0F /Max;
+
         }
 
         public Bitmap DrawImage(int height, int width)
@@ -35,10 +39,23 @@ namespace Mandelbrot
 
                     int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY, Max);
 
-                    bitmap.SetPixel(y, x, Color.FromArgb(mandelNumber, mandelNumber, 100, mandelNumber % 10));
+                    Color color = GetColor(mandelNumber);
+
+                    bitmap.SetPixel(y, x, color);
                 }
             }
             return bitmap;
+        }
+
+        private Color GetColor(int mandelNumber)
+        {
+            int blue = mandelNumber < 50 ? (int)(colorscale * mandelNumber) : 0;
+            var color = Color.FromArgb(255, (int)(colorscale * mandelNumber), (int)(-colorscale * (1 - mandelNumber)), blue);
+            //int red = mandelNumber < 50 ? (int)(colorscale * mandelNumber) : 0 ;
+            //
+            //int green = mandelNumber > 50 ? (int)((colorscale * mandelNumber) - 126) : 0;
+            //var color = Color.FromArgb(255, red, green, blue);
+            return color;
         }
     }
 }
