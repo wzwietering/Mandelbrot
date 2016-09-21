@@ -41,8 +41,10 @@ namespace Mandelbrot
             ValueBox.Location = new Point(Description.Width + 20 + x, y);
             ValueBox.Size = new Size(100, 20);
             ValueBox.Text = value.ToString();
-            ValueBox.DecimalPlaces = 3;
             ValueBox.Name = id.ToString();
+            ValueBox.DecimalPlaces = 3;
+            ValueBox.Increment = 0.001m;
+            ValueBox.Minimum = -100;
             this.Controls.Add(ValueBox);
             ValueBox.TextChanged += ValueChange;
         }
@@ -53,16 +55,16 @@ namespace Mandelbrot
             switch (id)
             {
                 case 0:
-                    ImageDrawer.MiddleX = (double)((NumericUpDown)sender).Value;
+                    ImageDrawer.MiddleX = (double)decimal.Parse(((NumericUpDown)sender).Text); ;
                     break;
                 case 1:
-                    ImageDrawer.MiddleY = (double)((NumericUpDown)sender).Value;
+                    ImageDrawer.MiddleY = (double)decimal.Parse(((NumericUpDown)sender).Text); ;
                     break;
                 case 2:
-                    ImageDrawer.Scale = (double)((NumericUpDown)sender).Value;
+                    ImageDrawer.Scale = (double)decimal.Parse(((NumericUpDown)sender).Text); ;
                     break;
                 case 3:
-                    ImageDrawer.Max = (int)((NumericUpDown)sender).Value;
+                    ImageDrawer.Max = (int)decimal.Parse(((NumericUpDown)sender).Text);
                     break;
             }
         }
