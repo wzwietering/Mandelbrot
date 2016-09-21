@@ -14,13 +14,13 @@ namespace Mandelbrot
         /// <param name="a">Coordinate a</param>
         /// <param name="b">Coordinate b</param>
         /// <returns>The Mander number for the given coordinates on a plain.</returns>
-        public static int CalculateMandelNumber(float x, float y, int max)
+        public static int CalculateMandelNumber(double x, double y, int max)
         {
             int mandelNumber = 0;
             double distance = 0;
 
-            float a = 0;
-            float b = 0;
+            double a = 0;
+            double b = 0;
 
             while (distance < 2 && mandelNumber < max)
             {

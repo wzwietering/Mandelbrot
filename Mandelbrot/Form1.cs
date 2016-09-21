@@ -6,19 +6,17 @@ namespace Mandelbrot
 {
     public partial class Form1 : Form
     {
-        private float middleX = (float)-1;
-        private float middleY = (float)-0.0;
-        private float scale = (float)0.005;
-        private int max = 100;
+        public ImageDrawer ImageDrawer { get; private set; }
 
         public Form1()
         {
             InitializeComponent();
+            this.ImageDrawer = new ImageDrawer();
 
-            CreateControl(20, 20, middleX, "Middelste x:");
-            CreateControl(20, 50, middleY, "Middelste y:");
-            CreateControl(300, 20, scale, "Schaal:");
-            CreateControl(300, 50, max, "Max:");
+            CreateControl(20, 20, ImageDrawer.middleX, "Middelste x:");
+            CreateControl(20, 50, ImageDrawer.middleY, "Middelste y:");
+            CreateControl(300, 20, ImageDrawer.scale, "Schaal:");
+            CreateControl(300, 50, ImageDrawer.max, "Max:");
 
             var goButton = new Button() { Text = "Go!" };
             goButton.Click += CreateMandelbrotImage;
@@ -28,21 +26,7 @@ namespace Mandelbrot
 
         private void CreateMandelbrotImage(object sender, EventArgs e)
         {
-            var bitmap = new Bitmap(this.Height, this.Width);
-
-            for (int x = 0; x <= this.Width-1; x++)
-            {
-                for(int y = 0; y <= this.Height-1; y++)
-                {
-                    float coordinateX = x * scale + middleX;
-                    float coordinateY = y * scale + middleY;
-
-                    int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY, max);
-
-                    bitmap.SetPixel(y, x, Color.FromArgb(mandelNumber, mandelNumber, 100, mandelNumber%10));
-                }
-                this.BackgroundImage = bitmap;
-            }
+            this.BackgroundImage = ImageDrawer.DrawImage(this.Height, this.Width);
         }
 
         private void CreateControl(int x, int y, float value, string label)
