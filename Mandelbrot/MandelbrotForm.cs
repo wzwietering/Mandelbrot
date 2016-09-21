@@ -20,7 +20,19 @@ namespace Mandelbrot
 
             var goButton = new Button() { Text = "Go!" };
             goButton.Click += CreateMandelbrotImage;
+
             this.Controls.Add(goButton);
+
+            this.MouseClick += HandleMouseClick;
+        }
+
+        private void HandleMouseClick(object sender, MouseEventArgs e)
+        {
+            this.ImageDrawer.MiddleX = e.X * ImageDrawer.Scale + ImageDrawer.MiddleX;
+            this.ImageDrawer.MiddleY = e.Y * ImageDrawer.Scale + ImageDrawer.MiddleY;
+            this.ImageDrawer.Scale = this.ImageDrawer.Scale / 2;
+
+            this.BackgroundImage = ImageDrawer.DrawImage(this.Height, this.Width);
         }
 
         private void CreateMandelbrotImage(object sender, EventArgs e)
