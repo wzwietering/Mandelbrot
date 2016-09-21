@@ -13,10 +13,10 @@ namespace Mandelbrot
             InitializeComponent();
             this.ImageDrawer = new ImageDrawer();
 
-            CreateControl(20, 20, ImageDrawer.middleX, "Middelste x:");
-            CreateControl(20, 50, ImageDrawer.middleY, "Middelste y:");
-            CreateControl(300, 20, ImageDrawer.scale, "Schaal:");
-            CreateControl(300, 50, ImageDrawer.max, "Max:");
+            CreateControl(20, 20, ImageDrawer.MiddleX, "Middelste x:");
+            CreateControl(20, 50, ImageDrawer.MiddleY, "Middelste y:");
+            CreateControl(300, 20, ImageDrawer.Scale, "Schaal:");
+            CreateControl(300, 50, ImageDrawer.Max, "Max:");
 
             var goButton = new Button() { Text = "Go!" };
             goButton.Click += CreateMandelbrotImage;
@@ -29,7 +29,7 @@ namespace Mandelbrot
             this.BackgroundImage = ImageDrawer.DrawImage(this.Height, this.Width);
         }
 
-        private void CreateControl(int x, int y, float value, string label)
+        private void CreateControl(int x, int y, double value, string label)
         {
             Label Description = new Label();
             Description.Text = label;

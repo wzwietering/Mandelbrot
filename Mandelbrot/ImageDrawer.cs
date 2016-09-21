@@ -9,17 +9,17 @@ namespace Mandelbrot
 {
     public class ImageDrawer
     {
-        public float middleX { get; set; }
-        public float middleY { get; set; }
-        public float scale { get; set; }
-        public int max { get; set; }
+        public double MiddleX { get; set; }
+        public double MiddleY { get; set; }
+        public double Scale { get; set; }
+        public int Max { get; set; }
 
         public ImageDrawer()
         {
-            middleX = (float)-1;
-            middleY = (float)-0.0;
-            scale = (float)0.005;
-            max = 100;
+            MiddleX = -1;
+            MiddleY = -0.0;
+            Scale = 0.005;
+            Max = 100;
         }
 
         public Bitmap DrawImage(int height, int width)
@@ -30,10 +30,10 @@ namespace Mandelbrot
             {
                 for (int y = 0; y <= height - 1; y++)
                 {
-                    double coordinateX = x * scale + middleX;
-                    double coordinateY = y * scale + middleY;
+                    double coordinateX = x * Scale + MiddleX;
+                    double coordinateY = y * Scale + MiddleY;
 
-                    int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY, max);
+                    int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY, Max);
 
                     bitmap.SetPixel(y, x, Color.FromArgb(mandelNumber, mandelNumber, 100, mandelNumber % 10));
                 }
