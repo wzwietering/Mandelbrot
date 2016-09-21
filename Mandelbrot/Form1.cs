@@ -42,7 +42,7 @@ namespace Mandelbrot
             ValueBox.Size = new Size(100, 20);
             ValueBox.Text = value.ToString();
             ValueBox.Name = id.ToString();
-            ValueBox.DecimalPlaces = 3;
+            ValueBox.DecimalPlaces = 8;
             ValueBox.Increment = 0.001m;
             ValueBox.Minimum = -100;
             this.Controls.Add(ValueBox);
@@ -52,20 +52,27 @@ namespace Mandelbrot
         private void ValueChange(object sender, EventArgs e)
         {
             int id = Int32.Parse(((NumericUpDown)sender).Name);
-            switch (id)
+            try
             {
-                case 0:
-                    ImageDrawer.MiddleX = (double)decimal.Parse(((NumericUpDown)sender).Text); ;
-                    break;
-                case 1:
-                    ImageDrawer.MiddleY = (double)decimal.Parse(((NumericUpDown)sender).Text); ;
-                    break;
-                case 2:
-                    ImageDrawer.Scale = (double)decimal.Parse(((NumericUpDown)sender).Text); ;
-                    break;
-                case 3:
-                    ImageDrawer.Max = (int)decimal.Parse(((NumericUpDown)sender).Text);
-                    break;
+                switch (id)
+                {
+                    case 0:
+                        ImageDrawer.MiddleX = (double)decimal.Parse(((NumericUpDown)sender).Text);
+                        break;
+                    case 1:
+                        ImageDrawer.MiddleY = (double)decimal.Parse(((NumericUpDown)sender).Text);
+                        break;
+                    case 2:
+                        ImageDrawer.Scale = (double)decimal.Parse(((NumericUpDown)sender).Text);
+                        break;
+                    case 3:
+                        ImageDrawer.Max = (int)decimal.Parse(((NumericUpDown)sender).Text);
+                        break;
+                }
+            }
+            catch (FormatException)
+            {
+
             }
         }
     } 
