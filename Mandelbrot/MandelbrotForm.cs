@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace Mandelbrot
 {
-    public partial class Form1 : Form
+    public partial class MandelbrotForm : Form
     {
         public ImageDrawer ImageDrawer { get; private set; }
 
-        public Form1()
+        public MandelbrotForm()
         {
             InitializeComponent();
             this.ImageDrawer = new ImageDrawer();
@@ -21,7 +21,6 @@ namespace Mandelbrot
             var goButton = new Button() { Text = "Go!" };
             goButton.Click += CreateMandelbrotImage;
             this.Controls.Add(goButton);
-
         }
 
         private void CreateMandelbrotImage(object sender, EventArgs e)
