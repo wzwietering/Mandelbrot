@@ -35,13 +35,13 @@ namespace Mandelbrot
         /// <summary>
         /// Constructor for this class. Creates a new image drawer with default values for its properties.
         /// </summary>
-        public ImageDrawer()
+        public ImageDrawer(double middleX = 0.0, double middleY = 0.0, double scale = 0.001, int max = 100)
         {
-            MiddleX = -1;
-            MiddleY = -0.0;
-            Scale = 0.001;
-            Max = 100;
-            colorscale = 255.0F /Max;
+            MiddleX = middleX;
+            MiddleY = middleY;
+            Scale = scale;
+            Max = max;
+            colorscale = 255.0F / max;
         }
 
         /// <summary>
