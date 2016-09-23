@@ -52,7 +52,7 @@ namespace Mandelbrot
         /// <returns>a <see cref="Bitmap"/> with the mandelbrot image. </returns>
         public Bitmap DrawImage(int height, int width)
         {
-            var bitmap = new Bitmap(height, width);
+            var bitmap = new Bitmap(width, height);
             // For each pixel in the with...
             for (int x = 0; x <= width - 1; x++)
             {
@@ -68,7 +68,7 @@ namespace Mandelbrot
 
                     // Get a nice color to match and color this pixel with it.
                     Color color = GetColor(mandelNumber);
-                    bitmap.SetPixel(y, x, color);
+                    bitmap.SetPixel(x, y, color);
                 }
             }
             return bitmap;
