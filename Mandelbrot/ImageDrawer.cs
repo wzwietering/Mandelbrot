@@ -54,10 +54,10 @@ namespace Mandelbrot
         {
             var bitmap = new Bitmap(width, height);
             // For each pixel in the with...
-            for (int x = 0; x <= width - 1; x++)
+            for (int x = 0; x < width; x++)
             {
                 // And each pixel in the height...
-                for (int y = 0; y <= height - 1; y++)
+                for (int y = 0; y < height; y++)
                 {
                     // Get the coordinates of this pixel based on the image scale and center coordinate.
                     double coordinateX = x * Scale + MiddleX;
