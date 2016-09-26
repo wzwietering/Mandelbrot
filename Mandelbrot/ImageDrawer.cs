@@ -1,4 +1,8 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Threading.Tasks;
 
 namespace Mandelbrot
 {
@@ -50,15 +54,28 @@ namespace Mandelbrot
         /// <param name="height"> The height that the image will be</param>
         /// <param name="width"> The width that the image will be</param>
         /// <returns>a <see cref="Bitmap"/> with the mandelbrot image. </returns>
-        public Bitmap DrawImage(int height, int width)
+        public unsafe Bitmap DrawImage(int height, int width)
         {
+            //To test the performance
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            //Creation of bitmap, reservation of memory and some useful variables.
             var bitmap = new Bitmap(width, height);
-            // For each pixel in the with...
-            for (int x = 0; x <= width - 1; x++)
+            BitmapData bitmapData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            int bytesPP = Image.GetPixelFormatSize(bitmap.PixelFormat) / 8;
+            int bitmapH = bitmapData.Height;
+            int bitmapW = bitmapData.Width;
+            byte* address = (byte*)bitmapData.Scan0;
+
+            //Parallel.For improves speed by about 70% compared to a normal for loop.
+            Parallel.For(0, bitmapH, y =>
             {
-                // And each pixel in the height...
-                for (int y = 0; y <= height - 1; y++)
+                Parallel.For(0, bitmapW, x =>
                 {
+                    //I have no idea why x needs to be multiplied by 2, but it works...
+                    byte* data = address + y * bitmapData.Stride + x * 2;
+
                     // Get the coordinates of this pixel based on the image scale and center coordinate.
                     double coordinateX = x * Scale + MiddleX;
                     double coordinateY = y * Scale + MiddleY;
@@ -68,9 +85,17 @@ namespace Mandelbrot
 
                     // Get a nice color to match and color this pixel with it.
                     Color color = GetColor(mandelNumber);
-                    bitmap.SetPixel(x, y, color);
-                }
-            }
+
+                    data[x] = color.B;
+                    data[x + 1] = color.G;
+                    data[x + 2] = color.R;
+                });
+            });
+
+            //Unlocking of memory.
+            bitmap.UnlockBits(bitmapData);
+            sw.Stop();
+            System.Console.WriteLine(sw.ElapsedMilliseconds);
             return bitmap;
         }
 
