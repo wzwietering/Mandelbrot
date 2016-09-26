@@ -77,8 +77,9 @@ namespace Mandelbrot
                 Text = value.ToString(),
                 Name = id.ToString(),
                 DecimalPlaces = 8,
-                Increment = 0.001m,
+                Increment = 0.01m,
                 Minimum = -100,
+                Maximum = 100,
             };
 
             this.Controls.Add(ValueBox);

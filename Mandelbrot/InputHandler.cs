@@ -43,11 +43,12 @@ namespace Mandelbrot
 
         public void HandleTextBoxValueChange(object sender)
         {
-            int id = Int32.Parse(((NumericUpDown)sender).Name);
-            var value = double.Parse(((NumericUpDown)sender).Text);
-
+            //When the user only enters a minus, comma or dot, the FormatException is thrown
             try
             {
+                int id = Int32.Parse(((NumericUpDown)sender).Name);
+                var value = double.Parse(((NumericUpDown)sender).Text);
+
                 switch (id)
                 {
                     case 0:
