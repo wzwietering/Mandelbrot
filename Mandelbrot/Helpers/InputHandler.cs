@@ -14,7 +14,7 @@ namespace Mandelbrot
 
         public InputHandler()
         {
-            this.ImageDrawer = new ImageDrawer(middleX: 0.1);
+            this.ImageDrawer = new ImageDrawer();
         }
 
         /// <summary>
@@ -26,14 +26,16 @@ namespace Mandelbrot
         /// <param name="e"></param>
         public void HandleMouseClick(MandelbrotForm form, MouseEventArgs e)
         {
-            // Set new middle x and middle y coordinates.
-            this.ImageDrawer.CenterX = (e.X - form.Width / 4) * ImageDrawer.Scale + ImageDrawer.CenterX;
-            this.ImageDrawer.CenterY = (e.Y - form.Height / 4) * ImageDrawer.Scale + ImageDrawer.CenterY ;
-            // Set new scale
-            this.ImageDrawer.Scale = this.ImageDrawer.Scale / 2;
+            var oldParameters = form.UserInputParameters;
+            var newParameters = new UserInputParameters()
+            {
+                CenterX = (e.X - form.Width / 4) * oldParameters.Scale + oldParameters.CenterX,
+                CenterY = (e.Y - form.Width / 4) * oldParameters.Scale + oldParameters.CenterY,
+                Scale = oldParameters.Scale / 2,
+                Max = oldParameters.Max
+            };
 
-            //Set new values in textbox
-            SetImageDrawerValues(form);
+            form.UserInputParameters = newParameters;
 
             // And draw a new image.
             StartNewImageThread(form);
@@ -45,28 +47,7 @@ namespace Mandelbrot
         /// <param name="form"></param>
         internal void HandleGoButtonClick(MandelbrotForm form)
         {
-            GetImageDrawerValues(form);
             StartNewImageThread(form);
-        }
-
-        /// <summary>
-        /// Set the values in the textboxes to the imagedrawer properties.
-        /// </summary>
-        /// <param name="form">The form that contains the textboxes.</param>
-        private void GetImageDrawerValues(MandelbrotForm form)
-        {
-            ImageDrawer.CenterX = double.Parse(form.centerX.Text);
-            ImageDrawer.CenterY = double.Parse(form.centerY.Text);
-            ImageDrawer.Scale = double.Parse(form.scale.Text);
-            ImageDrawer.Max = int.Parse(form.max.Text);
-        }
-
-        private void SetImageDrawerValues(MandelbrotForm form)
-        {
-            form.centerX.Text = ImageDrawer.CenterX.ToString();
-            form.centerY.Text = ImageDrawer.CenterY.ToString();
-            form.scale.Text = ImageDrawer.Scale.ToString();
-            form.max.Text = ImageDrawer.Max.ToString();
         }
 
         /// <summary>
@@ -86,7 +67,7 @@ namespace Mandelbrot
         /// <param name="form">The form we want to create an image for.</param>
         private void CreateMandelbrotImage(MandelbrotForm form)
         {
-            form.BackgroundImage = ImageDrawer.DrawImage(form.Height, form.Width);
+            form.BackgroundImage = ImageDrawer.DrawImage(form.Height, form.Width, form.UserInputParameters);
         }
     }
 }

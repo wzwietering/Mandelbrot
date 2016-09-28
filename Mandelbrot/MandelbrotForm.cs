@@ -6,12 +6,42 @@ namespace Mandelbrot
 {
     public partial class MandelbrotForm : Form
     {
+        /// <summary>
+        /// The user input fields on this form
+        /// </summary>
         public Control centerX;
         public Control centerY;
         public Control scale;
         public Control max;
 
+        /// <summary>
+        /// The inputhandler. Handles the form input (no shit, sherlock).
+        /// </summary>
         internal InputHandler InputHandler { get; private set; }
+
+        /// <summary>
+        /// All user controls will be bound to one input parameters object, to be used by the image handler later.
+        /// </summary>
+        public UserInputParameters UserInputParameters
+        {
+            get
+            {
+                return new UserInputParameters
+                {
+                    CenterX = double.Parse(centerX.Text),
+                    CenterY = double.Parse(centerY.Text),
+                    Scale = double.Parse(scale.Text),
+                    Max = int.Parse(max.Text)
+                };
+            }
+            set
+            {
+                centerX.Text = value.CenterX.ToString();
+                centerY.Text = value.CenterY.ToString();
+                scale.Text = value.Scale.ToString();
+                max.Text = value.Max.ToString();
+            }
+        }
 
         public MandelbrotForm()
         {

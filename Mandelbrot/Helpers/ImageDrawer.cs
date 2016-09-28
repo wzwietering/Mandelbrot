@@ -12,49 +12,12 @@ namespace Mandelbrot
     public class ImageDrawer
     {
         /// <summary>
-        /// The x-coordinate that is the center of the image
-        /// </summary>
-        public double CenterX { get; set; }
-
-        /// <summary>
-        /// The y-coordinate that is the center of the image.
-        /// </summary>
-        public double CenterY { get; set; }
-
-        /// <summary>
-        /// The scale of the image to be rendered.
-        /// </summary>
-        public double Scale { get; set; }
-
-        /// <summary>
-        /// The max integer value that the mandelbrot number can have.
-        /// </summary>
-        public int Max { get; set; }
-
-        /// <summary>
-        /// The scale of the color value per manderbrot number increment (255 devided by the max manderbrot number).
-        /// </summary>
-        float colorscale;
-
-        /// <summary>
-        /// Constructor for this class. Creates a new image drawer with default values for its properties.
-        /// </summary>
-        public ImageDrawer(double middleX = 0.0, double middleY = 0.0, double scale = 0.001, int max = 100)
-        {
-            CenterX = middleX;
-            CenterY = middleY;
-            Scale = scale;
-            Max = max;
-            colorscale = 255.0F / max;
-        }
-
-        /// <summary>
         /// Create a new mandelbrot image.
         /// </summary>
         /// <param name="height"> The height that the image will be</param>
         /// <param name="width"> The width that the image will be</param>
         /// <returns>a <see cref="Bitmap"/> with the mandelbrot image. </returns>
-        public unsafe Bitmap DrawImage(int height, int width)
+        public unsafe Bitmap DrawImage(int height, int width, UserInputParameters parameters)
         {
             //To test the performance
             Stopwatch sw = new Stopwatch();
@@ -77,11 +40,11 @@ namespace Mandelbrot
                     byte* data = address + y * bitmapData.Stride + x * 2;
 
                     // Get the coordinates of this pixel based on the image scale and center coordinate.
-                    double coordinateX = x * Scale + CenterX;
-                    double coordinateY = y * Scale + CenterY;
+                    double coordinateX = x * parameters.Scale + parameters.CenterX;
+                    double coordinateY = y * parameters.Scale + parameters.CenterY;
 
                     // And calculate this coordinates mandel number.
-                    int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY, Max);
+                    int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY, parameters.Max);
 
                     // Get a nice color to match and color this pixel with it.
                     Color color = ColorPicker.GetColor(mandelNumber);

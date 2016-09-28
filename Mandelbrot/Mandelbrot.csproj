@@ -47,16 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorConverter.cs" />
-    <Compile Include="InputHandler.cs" />
+    <Compile Include="Helpers\ColorConverter.cs" />
+    <Compile Include="Models\UserInputParameters.cs" />
+    <Compile Include="Helpers\InputHandler.cs" />
     <Compile Include="MandelbrotForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MandelbrotForm.Designer.cs">
       <DependentUpon>MandelbrotForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageDrawer.cs" />
-    <Compile Include="MandelnumberCaculator.cs" />
+    <Compile Include="Helpers\ImageDrawer.cs" />
+    <Compile Include="Helpers\MandelnumberCaculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MandelbrotForm.resx">
@@ -84,6 +85,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
