@@ -40,10 +40,15 @@ namespace Mandelbrot
         /// </summary>
         private void CreateControls()
         {
-            this.centerX = CreateControl(20, 20, 0.0, "centerX", "Middelste x:");
+            this.centerX = CreateControl(20, 30, 0.0, "centerX", "Middelste x:");
             this.centerY = CreateControl(20, 50, 0.0, "centerY", "Middelste y:");
-            this.scale = CreateControl(300, 20, 0.001, "scale", "Schaal:");
+            this.scale = CreateControl(300, 30, 0.001, "scale", "Schaal:");
             this.max = CreateControl(300, 50, 100, "max", "Max:", false);
+
+            MenuStrip menu = new MenuStrip();
+            ToolStripDropDownButton dropdown = new ToolStripDropDownButton("Image");
+            menu.Items.Add(dropdown);
+            Controls.Add(menu);
 
             CreateGoButton();
         }
@@ -55,6 +60,7 @@ namespace Mandelbrot
         {
             var goButton = new Button() { Text = "Go!" };
             goButton.Click += HandleGoButtonClick;
+            goButton.Location = new Point(20,100);
 
             this.Controls.Add(goButton);
         }
