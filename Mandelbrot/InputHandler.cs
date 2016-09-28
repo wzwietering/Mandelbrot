@@ -27,8 +27,8 @@ namespace Mandelbrot
         public void HandleMouseClick(MandelbrotForm form, MouseEventArgs e)
         {
             // Set new middle x and middle y coordinates.
-            this.ImageDrawer.MiddleX = (e.X - form.Width / 4) * ImageDrawer.Scale + ImageDrawer.MiddleX ;
-            this.ImageDrawer.MiddleY = (e.Y - form.Height / 4) * ImageDrawer.Scale + ImageDrawer.MiddleY ;
+            this.ImageDrawer.CenterX = (e.X - form.Width / 4) * ImageDrawer.Scale + ImageDrawer.CenterX;
+            this.ImageDrawer.CenterY = (e.Y - form.Height / 4) * ImageDrawer.Scale + ImageDrawer.CenterY ;
             // Set new scale
             this.ImageDrawer.Scale = this.ImageDrawer.Scale / 2;
 
@@ -36,16 +36,24 @@ namespace Mandelbrot
             StartNewImageThread(form);
         }
 
+        /// <summary>
+        /// User clicked the go button. Let's render a new image!
+        /// </summary>
+        /// <param name="form"></param>
         internal void HandleGoButtonClick(MandelbrotForm form)
         {
             SetImageDrawerValues(form);
             StartNewImageThread(form);
         }
 
+        /// <summary>
+        /// Set the values in the textboxes to the imagedrawer properties.
+        /// </summary>
+        /// <param name="form">The form that contains the textboxes.</param>
         private void SetImageDrawerValues(MandelbrotForm form)
         {
-            ImageDrawer.MiddleX = double.Parse(form.centerX.Text);
-            ImageDrawer.MiddleY = double.Parse(form.centerY.Text);
+            ImageDrawer.CenterX = double.Parse(form.centerX.Text);
+            ImageDrawer.CenterY = double.Parse(form.centerY.Text);
             ImageDrawer.Scale = double.Parse(form.scale.Text);
             ImageDrawer.Max = int.Parse(form.max.Text);
         }
@@ -61,6 +69,10 @@ namespace Mandelbrot
             t.Start();
         }
 
+        /// <summary>
+        /// Create a new image and set as the form background.
+        /// </summary>
+        /// <param name="form">The form we want to create an image for.</param>
         private void CreateMandelbrotImage(MandelbrotForm form)
         {
             form.BackgroundImage = ImageDrawer.DrawImage(form.Height, form.Width);

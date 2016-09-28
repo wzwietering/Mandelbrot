@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Mandelbrot
@@ -16,13 +15,14 @@ namespace Mandelbrot
 
         public MandelbrotForm()
         {
-            InitializeComponent();
-            
             this.InputHandler = new InputHandler();
+
+            InitializeComponent();
 
             CreateControls();
 
             this.MouseClick += HandleMouseClick;
+            this.Enter += HandleGoButtonClick;
         }
 
         private void HandleMouseClick(object sender, MouseEventArgs e)

@@ -14,12 +14,12 @@ namespace Mandelbrot
         /// <summary>
         /// The x-coordinate that is the center of the image
         /// </summary>
-        public double MiddleX { get; set; }
+        public double CenterX { get; set; }
 
         /// <summary>
         /// The y-coordinate that is the center of the image.
         /// </summary>
-        public double MiddleY { get; set; }
+        public double CenterY { get; set; }
 
         /// <summary>
         /// The scale of the image to be rendered.
@@ -41,8 +41,8 @@ namespace Mandelbrot
         /// </summary>
         public ImageDrawer(double middleX = 0.0, double middleY = 0.0, double scale = 0.001, int max = 100)
         {
-            MiddleX = middleX;
-            MiddleY = middleY;
+            CenterX = middleX;
+            CenterY = middleY;
             Scale = scale;
             Max = max;
             colorscale = 255.0F / max;
@@ -77,8 +77,8 @@ namespace Mandelbrot
                     byte* data = address + y * bitmapData.Stride + x * 2;
 
                     // Get the coordinates of this pixel based on the image scale and center coordinate.
-                    double coordinateX = x * Scale + MiddleX;
-                    double coordinateY = y * Scale + MiddleY;
+                    double coordinateX = x * Scale + CenterX;
+                    double coordinateY = y * Scale + CenterY;
 
                     // And calculate this coordinates mandel number.
                     int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY, Max);
