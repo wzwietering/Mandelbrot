@@ -32,6 +32,9 @@ namespace Mandelbrot
             // Set new scale
             this.ImageDrawer.Scale = this.ImageDrawer.Scale / 2;
 
+            //Set new values in textbox
+            SetImageDrawerValues(form);
+
             // And draw a new image.
             StartNewImageThread(form);
         }
@@ -42,20 +45,32 @@ namespace Mandelbrot
         /// <param name="form"></param>
         internal void HandleGoButtonClick(MandelbrotForm form)
         {
-            SetImageDrawerValues(form);
+            GetImageDrawerValues(form);
             StartNewImageThread(form);
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Set the values in the textboxes to the imagedrawer properties.
         /// </summary>
         /// <param name="form">The form that contains the textboxes.</param>
         private void SetImageDrawerValues(MandelbrotForm form)
+=======
+        private void GetImageDrawerValues(MandelbrotForm form)
+>>>>>>> origin/master
         {
             ImageDrawer.CenterX = double.Parse(form.centerX.Text);
             ImageDrawer.CenterY = double.Parse(form.centerY.Text);
             ImageDrawer.Scale = double.Parse(form.scale.Text);
             ImageDrawer.Max = int.Parse(form.max.Text);
+        }
+
+        private void SetImageDrawerValues(MandelbrotForm form)
+        {
+            form.centerX.Text = ImageDrawer.MiddleX.ToString();
+            form.centerY.Text = ImageDrawer.MiddleY.ToString();
+            form.scale.Text = ImageDrawer.Scale.ToString();
+            form.max.Text = ImageDrawer.Max.ToString();
         }
 
         /// <summary>
