@@ -75,11 +75,6 @@ namespace Mandelbrot
             this.scale = CreateControl(300, 30, 0.001, "scale", "Schaal:");
             this.max = CreateControl(300, 50, 100, "max", "Max:", false);
 
-            MenuStrip menu = new MenuStrip();
-            ToolStripDropDownButton dropdown = new ToolStripDropDownButton("Image");
-            menu.Items.Add(dropdown);
-            Controls.Add(menu);
-
             CreateGoButton();
         }
 
@@ -94,7 +89,17 @@ namespace Mandelbrot
 
             this.Controls.Add(goButton);
         }
-
+        
+        /// <summary>
+        /// This method creates a label and a numericupdown.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="value"></param>
+        /// <param name="name"></param>
+        /// <param name="label"></param>
+        /// <param name="hasDecimalValues"></param>
+        /// <returns></returns>
         private Control CreateControl(int x, int y, double value, string name, string label, bool hasDecimalValues = true)
         {
             Label Description = new Label()
@@ -105,7 +110,7 @@ namespace Mandelbrot
 
             this.Controls.Add(Description);
 
-            //Nummerbox
+            //Nummerbox with its properties
             NumericUpDown ValueBox = new NumericUpDown()
             {
                 Location = new Point(Description.Width + 20 + x, y),
@@ -120,6 +125,11 @@ namespace Mandelbrot
 
             this.Controls.Add(ValueBox);
             return ValueBox;
+        }
+
+        private void preset2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

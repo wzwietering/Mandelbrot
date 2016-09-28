@@ -36,7 +36,6 @@ namespace Mandelbrot
             {
                 Parallel.For(0, bitmapW, x =>
                 {
-                    //I have no idea why x needs to be multiplied by 2, but it works...
                     byte* data = address + y * bitmapData.Stride + x * 2;
 
                     // Get the coordinates of this pixel based on the image scale and center coordinate.
@@ -47,7 +46,7 @@ namespace Mandelbrot
                     int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY, parameters.Max);
 
                     // Get a nice color to match and color this pixel with it.
-                    Color color = ColorPicker.GetColor(mandelNumber);
+                    Color color = ColorPicker.GetColor(mandelNumber, 100);
 
                     data[x] = color.B;
                     data[x + 1] = color.G;
