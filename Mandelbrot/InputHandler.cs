@@ -49,15 +49,11 @@ namespace Mandelbrot
             StartNewImageThread(form);
         }
 
-<<<<<<< HEAD
         /// <summary>
         /// Set the values in the textboxes to the imagedrawer properties.
         /// </summary>
         /// <param name="form">The form that contains the textboxes.</param>
-        private void SetImageDrawerValues(MandelbrotForm form)
-=======
         private void GetImageDrawerValues(MandelbrotForm form)
->>>>>>> origin/master
         {
             ImageDrawer.CenterX = double.Parse(form.centerX.Text);
             ImageDrawer.CenterY = double.Parse(form.centerY.Text);
@@ -67,8 +63,8 @@ namespace Mandelbrot
 
         private void SetImageDrawerValues(MandelbrotForm form)
         {
-            form.centerX.Text = ImageDrawer.MiddleX.ToString();
-            form.centerY.Text = ImageDrawer.MiddleY.ToString();
+            form.centerX.Text = ImageDrawer.CenterX.ToString();
+            form.centerY.Text = ImageDrawer.CenterY.ToString();
             form.scale.Text = ImageDrawer.Scale.ToString();
             form.max.Text = ImageDrawer.Max.ToString();
         }
