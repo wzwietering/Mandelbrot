@@ -24,11 +24,11 @@ namespace Mandelbrot
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void HandleMouseClick(Form form, MouseEventArgs e)
+        public void HandleMouseClick(MandelbrotForm form, MouseEventArgs e)
         {
             // Set new middle x and middle y coordinates.
-            this.ImageDrawer.MiddleX = e.X * ImageDrawer.Scale + ImageDrawer.MiddleX;
-            this.ImageDrawer.MiddleY = e.Y * ImageDrawer.Scale + ImageDrawer.MiddleY;
+            this.ImageDrawer.MiddleX = (e.X - form.Width / 4) * ImageDrawer.Scale + ImageDrawer.MiddleX ;
+            this.ImageDrawer.MiddleY = (e.Y - form.Height / 4) * ImageDrawer.Scale + ImageDrawer.MiddleY ;
             // Set new scale
             this.ImageDrawer.Scale = this.ImageDrawer.Scale / 2;
 
@@ -36,40 +36,18 @@ namespace Mandelbrot
             StartNewImageThread(form);
         }
 
-        internal void HandleGoButtonClick(Form form)
+        internal void HandleGoButtonClick(MandelbrotForm form)
         {
+            SetImageDrawerValues(form);
             StartNewImageThread(form);
         }
 
-        public void HandleTextBoxValueChange(object sender)
+        private void SetImageDrawerValues(MandelbrotForm form)
         {
-            //When the user only enters a minus, comma or dot, the FormatException is thrown
-            try
-            {
-                int id = Int32.Parse(((NumericUpDown)sender).Name);
-                var value = double.Parse(((NumericUpDown)sender).Text);
-
-                switch (id)
-                {
-                    case 0:
-
-                        ImageDrawer.MiddleX = value;
-                        break;
-                    case 1:
-                        ImageDrawer.MiddleY = value;
-                        break;
-                    case 2:
-                        ImageDrawer.Scale = value;
-                        break;
-                    case 3:
-                        ImageDrawer.Max = (int)value;
-                        break;
-                }
-            }
-            catch (FormatException)
-            {
-
-            }
+            ImageDrawer.MiddleX = double.Parse(form.centerX.Text);
+            ImageDrawer.MiddleY = double.Parse(form.centerY.Text);
+            ImageDrawer.Scale = double.Parse(form.scale.Text);
+            ImageDrawer.Max = int.Parse(form.max.Text);
         }
 
         /// <summary>
@@ -77,13 +55,13 @@ namespace Mandelbrot
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void StartNewImageThread(Form form)
+        public void StartNewImageThread(MandelbrotForm form)
         {
             var t = new Thread(() => CreateMandelbrotImage(form));
             t.Start();
         }
 
-        private void CreateMandelbrotImage(Form form)
+        private void CreateMandelbrotImage(MandelbrotForm form)
         {
             form.BackgroundImage = ImageDrawer.DrawImage(form.Height, form.Width);
         }

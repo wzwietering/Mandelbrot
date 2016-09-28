@@ -7,6 +7,11 @@ namespace Mandelbrot
 {
     public partial class MandelbrotForm : Form
     {
+        public Control centerX;
+        public Control centerY;
+        public Control scale;
+        public Control max;
+
         internal InputHandler InputHandler { get; private set; }
 
         public MandelbrotForm()
@@ -30,20 +35,15 @@ namespace Mandelbrot
             InputHandler.HandleGoButtonClick(this);
         }
 
-        private void HandleValueChange(object sender, EventArgs e)
-        {
-            InputHandler.HandleTextBoxValueChange(sender);
-        }
-
         /// <summary>
         /// Create the controls for the form.
         /// </summary>
         private void CreateControls()
         {
-            CreateControl(20, 20, 0.0, 0, "Middelste x:");
-            CreateControl(20, 50, 0.0, 1, "Middelste y:");
-            CreateControl(300, 20, 0.001, 2, "Schaal:");
-            CreateControl(300, 50, 100, 3, "Max:");
+            this.centerX = CreateControl(20, 20, 0.0, "centerX", "Middelste x:");
+            this.centerY = CreateControl(20, 50, 0.0, "centerY", "Middelste y:");
+            this.scale = CreateControl(300, 20, 0.001, "scale", "Schaal:");
+            this.max = CreateControl(300, 50, 100, "max", "Max:", false);
 
             CreateGoButton();
         }
@@ -59,7 +59,7 @@ namespace Mandelbrot
             this.Controls.Add(goButton);
         }
 
-        private void CreateControl(int x, int y, double value, int id, string label)
+        private Control CreateControl(int x, int y, double value, string name, string label, bool hasDecimalValues = true)
         {
             Label Description = new Label()
             {
@@ -75,15 +75,15 @@ namespace Mandelbrot
                 Location = new Point(Description.Width + 20 + x, y),
                 Size = new Size(100, 20),
                 Text = value.ToString(),
-                Name = id.ToString(),
-                DecimalPlaces = 8,
-                Increment = 0.01m,
-                Minimum = -100,
-                Maximum = 100,
+                Name = name,
+                DecimalPlaces = hasDecimalValues ? 8 : 0,
+                Increment = hasDecimalValues ? 0.01m : 1,
+                Minimum = hasDecimalValues  ? - 100 : 0,
+                Maximum = 1000,
             };
 
             this.Controls.Add(ValueBox);
-            ValueBox.TextChanged += HandleValueChange;
+            return ValueBox;
         }
     }
 }
