@@ -50,6 +50,7 @@ namespace Mandelbrot
         internal void HandleGoButtonClick(MandelbrotForm form)
         {
             StartNewImageThread(form);
+            form.UserInputParameters = form.UserInputParameters;
         }
 
         /// <summary>

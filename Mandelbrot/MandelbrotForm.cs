@@ -29,10 +29,10 @@ namespace Mandelbrot
             {
                 return new UserInputParameters
                 {
-                    CenterX = double.Parse(centerX.Text),
-                    CenterY = double.Parse(centerY.Text),
-                    Scale = double.Parse(scale.Text),
-                    Max = int.Parse(max.Text),
+                    CenterX = TryGetDouble(centerX.Text, 0),
+                    CenterY = TryGetDouble(centerY.Text, 0),
+                    Scale = TryGetDouble(scale.Text, 0.001),
+                    Max = (int)TryGetDouble(max.Text, 100),
                     ColorScheme = ColorScheme
                 };
             }
@@ -44,6 +44,12 @@ namespace Mandelbrot
                 max.Text = value.Max.ToString();
                 ColorScheme = value.ColorScheme;
             }
+        }
+
+        private double TryGetDouble(string text, double defaultValue)
+        {
+            double.TryParse(text, out defaultValue);
+            return defaultValue;
         }
 
         public MandelbrotForm()
