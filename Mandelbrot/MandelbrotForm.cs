@@ -14,6 +14,7 @@ namespace Mandelbrot
         public Control scale;
         public Control max;
 
+        private string ColorScheme = "RedGreen";
         /// <summary>
         /// The inputhandler. Handles the form input (no shit, sherlock).
         /// </summary>
@@ -31,7 +32,8 @@ namespace Mandelbrot
                     CenterX = double.Parse(centerX.Text),
                     CenterY = double.Parse(centerY.Text),
                     Scale = double.Parse(scale.Text),
-                    Max = int.Parse(max.Text)
+                    Max = int.Parse(max.Text),
+                    ColorScheme = ColorScheme
                 };
             }
             set
@@ -40,6 +42,7 @@ namespace Mandelbrot
                 centerY.Text = value.CenterY.ToString();
                 scale.Text = value.Scale.ToString();
                 max.Text = value.Max.ToString();
+                ColorScheme = value.ColorScheme;
             }
         }
 

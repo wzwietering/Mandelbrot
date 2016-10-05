@@ -46,7 +46,7 @@ namespace Mandelbrot
                     int mandelNumber = MandelnumberCaculator.CalculateMandelNumber(coordinateX, coordinateY, parameters.Max);
 
                     // Get a nice color to match and color this pixel with it.
-                    Color color = ColorPicker.GetColor(mandelNumber, 100);
+                    Color color = ColorPicker.GetColor(mandelNumber, parameters.ColorScheme);
 
                     data[x] = color.B;
                     data[x + 1] = color.G;
