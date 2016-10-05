@@ -33,6 +33,32 @@ namespace Mandelbrot
                         ColorScheme = "BlueGreen"
                     }
                 }
+            },
+            {
+                new Preset(){
+                    Name = "Ook mooi",
+                    InputParameters = new UserInputParameters()
+                    {
+                        CenterX = 0.332,
+                        CenterY = 0.562375,
+                        Scale = 6.25E-05,
+                        Max = 100,
+                        ColorScheme = "RedGreen"
+                    }
+                }
+            },
+            {
+                new Preset(){
+                    Name = "Maaike",
+                    InputParameters = new UserInputParameters()
+                    {
+                        CenterX = -0.7439715,
+                        CenterY = -0.13926359375,
+                        Scale = 2.03828125E-05,
+                        Max = 2500,
+                        ColorScheme = "BlueGreen"
+                    }
+                }
             }
         };
 

@@ -40,6 +40,8 @@ namespace Mandelbrot
             this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blueGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ookMooiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.maaikeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,8 +54,7 @@ namespace Mandelbrot
             this.colorsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(779, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -62,13 +63,13 @@ namespace Mandelbrot
             this.imageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ImageMenuItem});
             this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
-            this.imageToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.imageToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.imageToolStripMenuItem.Text = "Image";
             // 
             // ImageMenuItem
             // 
             this.ImageMenuItem.Name = "ImageMenuItem";
-            this.ImageMenuItem.Size = new System.Drawing.Size(115, 26);
+            this.ImageMenuItem.Size = new System.Drawing.Size(98, 22);
             this.ImageMenuItem.Text = "Save";
             this.ImageMenuItem.Click += new System.EventHandler(this.HandleSaveClick);
             // 
@@ -76,22 +77,24 @@ namespace Mandelbrot
             // 
             this.presetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mooiToolStripMenuItem,
-            this.nogMooierToolStripMenuItem});
+            this.nogMooierToolStripMenuItem,
+            this.ookMooiToolStripMenuItem,
+            this.maaikeToolStripMenuItem});
             this.presetToolStripMenuItem.Name = "presetToolStripMenuItem";
-            this.presetToolStripMenuItem.Size = new System.Drawing.Size(61, 24);
+            this.presetToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.presetToolStripMenuItem.Text = "Preset";
             // 
             // mooiToolStripMenuItem
             // 
             this.mooiToolStripMenuItem.Name = "mooiToolStripMenuItem";
-            this.mooiToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.mooiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.mooiToolStripMenuItem.Text = "Mooi";
             this.mooiToolStripMenuItem.Click += new System.EventHandler(this.PresetSelected);
             // 
             // nogMooierToolStripMenuItem
             // 
             this.nogMooierToolStripMenuItem.Name = "nogMooierToolStripMenuItem";
-            this.nogMooierToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.nogMooierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.nogMooierToolStripMenuItem.Text = "Nog mooier";
             this.nogMooierToolStripMenuItem.Click += new System.EventHandler(this.PresetSelected);
             // 
@@ -101,37 +104,51 @@ namespace Mandelbrot
             this.redGreenToolStripMenuItem,
             this.blueGreenToolStripMenuItem});
             this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
-            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.colorsToolStripMenuItem.Text = "Colors";
             // 
             // redGreenToolStripMenuItem
             // 
             this.redGreenToolStripMenuItem.Name = "redGreenToolStripMenuItem";
-            this.redGreenToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.redGreenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.redGreenToolStripMenuItem.Text = "RedGreen";
             this.redGreenToolStripMenuItem.Click += new System.EventHandler(this.ColorSelected);
             // 
             // blueGreenToolStripMenuItem
             // 
             this.blueGreenToolStripMenuItem.Name = "blueGreenToolStripMenuItem";
-            this.blueGreenToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.blueGreenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.blueGreenToolStripMenuItem.Text = "BlueGreen";
             this.blueGreenToolStripMenuItem.Click += new System.EventHandler(this.ColorSelected);
             // 
+            // ookMooiToolStripMenuItem
+            // 
+            this.ookMooiToolStripMenuItem.Name = "ookMooiToolStripMenuItem";
+            this.ookMooiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ookMooiToolStripMenuItem.Text = "Ook mooi";
+            this.ookMooiToolStripMenuItem.Click += new System.EventHandler(this.PresetSelected);
+            // 
+            // maaikeToolStripMenuItem
+            // 
+            this.maaikeToolStripMenuItem.Name = "maaikeToolStripMenuItem";
+            this.maaikeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.maaikeToolStripMenuItem.Text = "Maaike";
+            this.maaikeToolStripMenuItem.Click += new System.EventHandler(this.PresetSelected);
+            // 
             // MandelbrotForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 690);
+            this.ClientSize = new System.Drawing.Size(584, 561);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MandelbrotForm";
             this.Text = "Mandelbrot";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         public void CreateControls()
@@ -200,6 +217,8 @@ namespace Mandelbrot
         private System.Windows.Forms.ToolStripMenuItem colorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redGreenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem blueGreenToolStripMenuItem;
+        private ToolStripMenuItem ookMooiToolStripMenuItem;
+        private ToolStripMenuItem maaikeToolStripMenuItem;
     }
 }
 
