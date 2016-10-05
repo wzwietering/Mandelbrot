@@ -10,31 +10,7 @@ namespace Mandelbrot
         {
             {
                 new Preset() {
-                    Name = "Mooi",
-                    InputParameters = new UserInputParameters()
-                    {
-                        CenterX = 0.438793517456055,
-                        CenterY = 0.342581103686523,
-                        Scale = 1.70909423828125E-06,
-                        Max = 200,
-                        ColorScheme = ColorSchemes.RedGreen
-                    }
-                }
-            },
-              new Preset(){
-                    Name = "Blobs",
-                    InputParameters = new UserInputParameters()
-                    {
-                        CenterX = 0.33695703125,
-                        CenterY = 0.57427734375,
-                        Scale = 1.953125E-06,
-                        Max = 200,
-                        ColorScheme = ColorSchemes.BlueGreen
-                    }
-                },
-            {
-                new Preset() {
-                    Name = "Nog mooier",
+                    Name = "Overview",
                     InputParameters = new UserInputParameters()
                     {
                         CenterX = -1.6,
@@ -46,8 +22,32 @@ namespace Mandelbrot
                 }
             },
             {
+                new Preset() {
+                    Name = "Towers",
+                    InputParameters = new UserInputParameters()
+                    {
+                        CenterX = 0.438793517456055,
+                        CenterY = 0.342581103686523,
+                        Scale = 1.70909423828125E-06,
+                        Max = 200,
+                        ColorScheme = ColorSchemes.RedGreen
+                    }
+                }
+            },
+              new Preset(){
+                    Name = "Crack",
+                    InputParameters = new UserInputParameters()
+                    {
+                        CenterX = 0.337684609375,
+                        CenterY = 0.573904396875,
+                        Scale = 9.765625E-07,
+                        Max = 200,
+                        ColorScheme = ColorSchemes.BlueGreen
+                    }
+                },
+            {
                 new Preset(){
-                    Name = "Ook mooi",
+                    Name = "Aura",
                     InputParameters = new UserInputParameters()
                     {
                         CenterX = 0.439261809277344,
@@ -60,7 +60,7 @@ namespace Mandelbrot
             },
             {
                 new Preset(){
-                    Name = "Maaike",
+                    Name = "Spiral",
                     InputParameters = new UserInputParameters()
                     {
                         CenterX = -0.7463970546875,
@@ -68,6 +68,19 @@ namespace Mandelbrot
                         Scale = 1.019140625E-05,
                         Max = 2500,
                         ColorScheme = ColorSchemes.BlueGreen
+                    }
+                }
+            },
+            {
+                new Preset(){
+                    Name = "Vortex",
+                    InputParameters = new UserInputParameters()
+                    {
+                        CenterX = -0.743307505996704,
+                        CenterY = -0.131193313735961,
+                        Scale = 9.95254516601565E-09,
+                        Max = 1000,
+                        ColorScheme = ColorSchemes.MultiColor
                     }
                 }
             }
