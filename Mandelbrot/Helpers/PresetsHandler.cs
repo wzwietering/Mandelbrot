@@ -13,14 +13,25 @@ namespace Mandelbrot
                     Name = "Mooi",
                     InputParameters = new UserInputParameters()
                     {
-                        CenterX = 0.437853515625,
-                        CenterY = 0.34181884765625,
-                        Scale = 0.34181884765625E-5,
+                        CenterX = 0.438793517456055,
+                        CenterY = 0.342581103686523,
+                        Scale = 1.70909423828125E-06,
                         Max = 200,
                         ColorScheme = "RedGreen"
                     }
                 }
             },
+              new Preset(){
+                    Name = "Blobs",
+                    InputParameters = new UserInputParameters()
+                    {
+                        CenterX = 0.33695703125,
+                        CenterY = 0.57427734375,
+                        Scale = 1.953125E-06,
+                        Max = 200,
+                        ColorScheme = "BlueGreen"
+                    }
+                },
             {
                 new Preset() {
                     Name = "Nog mooier",
@@ -39,11 +50,11 @@ namespace Mandelbrot
                     Name = "Ook mooi",
                     InputParameters = new UserInputParameters()
                     {
-                        CenterX = 0.332,
-                        CenterY = 0.562375,
-                        Scale = 6.25E-05,
-                        Max = 100,
-                        ColorScheme = "RedGreen"
+                        CenterX = 0.439261809277344,
+                        CenterY = 0.343060077346802,
+                        Scale = 1.06818389892578E-07,
+                        Max = 200,
+                        ColorScheme = "MultiColor"
                     }
                 }
             },
@@ -59,18 +70,7 @@ namespace Mandelbrot
                         ColorScheme = "BlueGreen"
                     }
                 }
-            },
-            new Preset(){
-                    Name = "Blobs",
-                    InputParameters = new UserInputParameters()
-                    {
-                        CenterX = 0.33695703125,
-                        CenterY = 0.57427734375,
-                        Scale = 1.953125E-06,
-                        Max = 200,
-                        ColorScheme = "BlueGreen"
-                    }
-                }
+            }
         };
 
         public static UserInputParameters GetPresets(string presetName)

@@ -18,9 +18,20 @@ namespace Mandelbrot
                 case "RedGreen":
                     return GetRedgreen(mandelNumber);
                 case "BlueGreen":
-                default:
                     return GetBlueGreen(mandelNumber);
+                default:
+                case "MultiColor":
+                    return GetMultiColor(mandelNumber);
             }
+        }
+
+        private static Color GetMultiColor(int mandelNumber)
+        {
+            int red = (int)(mandelNumber % 255);
+            int blue = (int)(mandelNumber * 50) % 255;
+            int green = (int)(mandelNumber * 10) % 255;
+            var color = Color.FromArgb(255, red, green, blue);
+            return color;
         }
 
         private static Color GetBlueGreen(int mandelNumber)
@@ -33,9 +44,9 @@ namespace Mandelbrot
 
         private static Color GetRedgreen(int mandelNumber)
         {
-            int red = (int)(mandelNumber * 100) % 255;
-            int blue = (int)(mandelNumber * 100 / 8) % 255;
-            var color = Color.FromArgb(255, red, blue, 0);
+            int red = (int)(mandelNumber * 100 ) % 255;
+            int green = (int)(mandelNumber * 100 / 8) % 255;
+            var color = Color.FromArgb(255, red, green, 0);
             return color;
         }
     }
