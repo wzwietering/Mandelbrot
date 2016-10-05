@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ColorConverter.cs" />
+    <Compile Include="Models\Preset.cs" />
     <Compile Include="Models\UserInputParameters.cs" />
     <Compile Include="Helpers\InputHandler.cs" />
     <Compile Include="MandelbrotForm.cs">
@@ -58,6 +59,7 @@
     </Compile>
     <Compile Include="Helpers\ImageDrawer.cs" />
     <Compile Include="Helpers\MandelnumberCaculator.cs" />
+    <Compile Include="Helpers\PresetsHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MandelbrotForm.resx">
