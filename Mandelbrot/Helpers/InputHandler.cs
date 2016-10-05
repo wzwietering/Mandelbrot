@@ -31,7 +31,7 @@ namespace Mandelbrot
             var newParameters = new UserInputParameters()
             {
                 CenterX = (e.X - form.Width / 4) * oldParameters.Scale + oldParameters.CenterX,
-                CenterY = (e.Y - form.Width / 4) * oldParameters.Scale + oldParameters.CenterY,
+                CenterY = (e.Y - form.Height / 4) * oldParameters.Scale + oldParameters.CenterY,
                 Scale = oldParameters.Scale / 2,
                 Max = oldParameters.Max,
                 ColorScheme = oldParameters.ColorScheme
