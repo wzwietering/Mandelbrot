@@ -30,7 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.preset1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mooiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nogMooierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,17 +51,17 @@
             // imageToolStripMenuItem
             // 
             this.imageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.preset1ToolStripMenuItem});
+            this.ImageMenuItem});
             this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
             this.imageToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.imageToolStripMenuItem.Text = "Image";
             // 
-            // preset1ToolStripMenuItem
+            // ImageMenuItem
             // 
-            this.preset1ToolStripMenuItem.Name = "preset1ToolStripMenuItem";
-            this.preset1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.preset1ToolStripMenuItem.Text = "Save";
-            this.preset1ToolStripMenuItem.Click += new System.EventHandler(this.preset1ToolStripMenuItem_Click);
+            this.ImageMenuItem.Name = "ImageMenuItem";
+            this.ImageMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ImageMenuItem.Text = "Save";
+            this.ImageMenuItem.Click += new System.EventHandler(this.HandleSaveClick);
             // 
             // presetToolStripMenuItem
             // 
@@ -75,13 +75,13 @@
             // mooiToolStripMenuItem
             // 
             this.mooiToolStripMenuItem.Name = "mooiToolStripMenuItem";
-            this.mooiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mooiToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.mooiToolStripMenuItem.Text = "Mooi";
             // 
             // nogMooierToolStripMenuItem
             // 
             this.nogMooierToolStripMenuItem.Name = "nogMooierToolStripMenuItem";
-            this.nogMooierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nogMooierToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.nogMooierToolStripMenuItem.Text = "Nog mooier";
             // 
             // MandelbrotForm
@@ -104,7 +104,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem imageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem preset1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ImageMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mooiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nogMooierToolStripMenuItem;

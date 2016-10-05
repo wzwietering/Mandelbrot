@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -68,6 +69,36 @@ namespace Mandelbrot
         private void CreateMandelbrotImage(MandelbrotForm form)
         {
             form.BackgroundImage = ImageDrawer.DrawImage(form.Height, form.Width, form.UserInputParameters);
+        }
+
+        /// <summary>
+        /// This method saves the Mandelbrot drawing to a file
+        /// </summary>
+        /// <param name="form">The form is required to retrieve the image</param>
+        public void SaveImage(MandelbrotForm form)
+        {
+            Image background = form.BackgroundImage;
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Title = "Save Image";
+            sfd.Filter = "PNG|*.png|JPEG|*.jpg|Bitmap Image|*.bmp";
+            sfd.ShowDialog();
+
+            try
+            {
+                System.IO.FileStream fs = (System.IO.FileStream)sfd.OpenFile();
+                background.Save(fs, System.Drawing.Imaging.ImageFormat.Png);
+            }
+            //When there is no image, this error is thrown
+            catch(NullReferenceException e)
+            {
+
+            }
+            //This error is thrown when the user cancels the save
+            catch(IndexOutOfRangeException i)
+            {
+
+            }
         }
     }
 }

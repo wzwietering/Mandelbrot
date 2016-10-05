@@ -65,6 +65,11 @@ namespace Mandelbrot
             InputHandler.HandleGoButtonClick(this);
         }
 
+        private void HandleSaveClick(object sender, EventArgs e)
+        {
+            InputHandler.SaveImage(this);
+        }
+
         /// <summary>
         /// Create the controls for the form.
         /// </summary>
@@ -125,16 +130,6 @@ namespace Mandelbrot
 
             this.Controls.Add(ValueBox);
             return ValueBox;
-        }
-
-        private void preset2ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void preset1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
