@@ -14,7 +14,7 @@ namespace Mandelbrot
         public Control scale;
         public Control max;
 
-        private string ColorScheme = "RedGreen";
+        public string ColorScheme = "RedGreen";
         /// <summary>
         /// The inputhandler. Handles the form input (no shit, sherlock).
         /// </summary>
