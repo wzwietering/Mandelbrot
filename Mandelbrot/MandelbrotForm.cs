@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Mandelbrot
@@ -61,6 +62,9 @@ namespace Mandelbrot
 
             this.MouseClick += HandleMouseClick;
             this.Enter += HandleGoButtonClick;
+
+            this.UserInputParameters = PresetsHandler.presets.First().InputParameters;
+            InputHandler.StartNewImageThread(this);
         }
 
         private void HandleMouseClick(object sender, MouseEventArgs e)

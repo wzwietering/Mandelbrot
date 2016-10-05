@@ -13,7 +13,7 @@ namespace Mandelbrot
                     Name = "Overview",
                     InputParameters = new UserInputParameters()
                     {
-                        CenterX = -1.6,
+                        CenterX = -1.7,
                         CenterY = -1.6,
                         Scale = 0.005,
                         Max = 1000,
