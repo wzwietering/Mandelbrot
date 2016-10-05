@@ -81,8 +81,7 @@ namespace Mandelbrot
             // 
             this.colorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.redGreenToolStripMenuItem,
-            this.blueGreenToolStripMenuItem,
-            this.redBlueToolStripMenuItem});
+            this.blueGreenToolStripMenuItem});
             this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
             this.colorsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.colorsToolStripMenuItem.Text = "Colors";
