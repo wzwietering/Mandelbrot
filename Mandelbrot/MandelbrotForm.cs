@@ -51,7 +51,6 @@ namespace Mandelbrot
             this.InputHandler = new InputHandler();
 
             InitializeComponent();
-
             CreateControls();
 
             this.MouseClick += HandleMouseClick;
@@ -79,62 +78,10 @@ namespace Mandelbrot
             InputHandler.StartNewImageThread(this);
         }
 
-        /// <summary>
-        /// Create the controls for the form.
-        /// </summary>
-        private void CreateControls()
+        private void ColorSelected(object sender, EventArgs e)
         {
-            this.centerX = CreateControl(20, 30, 0.0, "centerX", "Middelste x:");
-            this.centerY = CreateControl(20, 50, 0.0, "centerY", "Middelste y:");
-            this.scale = CreateControl(300, 30, 0.001, "scale", "Schaal:");
-            this.max = CreateControl(300, 50, 100, "max", "Max:", false);
-
-            CreateGoButton();
-        }
-
-        /// <summary>
-        /// Create the go button for the form.
-        /// </summary>
-        private void CreateGoButton()
-        {
-            var goButton = new Button() { Text = "Go!" };
-            goButton.Click += HandleGoButtonClick;
-            goButton.Location = new Point(20,100);
-
-            this.Controls.Add(goButton);
-        }
-        
-        /// <summary>
-        /// This method creates a label and a numericupdown.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="value"></param>
-        /// <param name="name"></param>
-        /// <param name="label"></param>
-        /// <param name="hasDecimalValues"></param>
-        /// <returns></returns>
-        private Control CreateControl(int x, int y, double value, string name, string label, bool hasDecimalValues = true)
-        {
-            Label Description = new Label()
-            {
-                Text = label,
-                Location = new Point(x, y)
-            };
-
-            this.Controls.Add(Description);
-
-            //Nummerbox with its properties
-            TextBox ValueBox = new TextBox()
-            {
-                Location = new Point(Description.Width + 20 + x, y),
-                Size = new Size(100, 20),
-                Text = value.ToString(),
-                Name = name
-            };
-
-            this.Controls.Add(ValueBox);
-            return ValueBox;
+            this.ColorScheme = ((ToolStripMenuItem)sender).Text;
+            InputHandler.StartNewImageThread(this);
         }
     }
 }
