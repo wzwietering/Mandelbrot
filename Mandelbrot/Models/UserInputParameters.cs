@@ -12,6 +12,6 @@ namespace Mandelbrot
         public double CenterY { get; set; }
         public int Max { get; set; }
         public double Scale { get; set; }
-        public string ColorScheme { get; set; }
+        public ColorSchemes ColorScheme { get; set; }
     }
 }

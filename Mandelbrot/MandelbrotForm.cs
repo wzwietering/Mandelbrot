@@ -14,7 +14,7 @@ namespace Mandelbrot
         public Control scale;
         public Control max;
 
-        public string ColorScheme = "RedGreen";
+        public ColorSchemes ColorScheme = ColorSchemes.MultiColor;
         /// <summary>
         /// The inputhandler. Handles the form input (no shit, sherlock).
         /// </summary>
@@ -57,7 +57,7 @@ namespace Mandelbrot
             this.InputHandler = new InputHandler();
 
             InitializeComponent();
-            CreateControls();
+            CreateCustomControls();
 
             this.MouseClick += HandleMouseClick;
             this.Enter += HandleGoButtonClick;
@@ -86,7 +86,7 @@ namespace Mandelbrot
 
         private void ColorSelected(object sender, EventArgs e)
         {
-            this.ColorScheme = ((ToolStripMenuItem)sender).Text;
+            this.ColorScheme = (ColorSchemes)Enum.Parse(typeof(ColorSchemes), ((ToolStripMenuItem)sender).Text);
             InputHandler.StartNewImageThread(this);
         }
     }

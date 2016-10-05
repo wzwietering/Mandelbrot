@@ -38,8 +38,6 @@ namespace Mandelbrot
             this.ImageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.redGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.blueGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,31 +73,13 @@ namespace Mandelbrot
             // 
             this.presetToolStripMenuItem.Name = "presetToolStripMenuItem";
             this.presetToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.presetToolStripMenuItem.Text = "Preset";
-            
-            // colorsToolStripMenuItem
+            this.presetToolStripMenuItem.Text = "Presets";
             // 
-            this.colorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.redGreenToolStripMenuItem,
-            this.blueGreenToolStripMenuItem});
-            this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
-            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            // presetToolStripMenuItem
+            // 
+            this.colorsToolStripMenuItem.Name = "colorToolStripMenuItem";
+            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.colorsToolStripMenuItem.Text = "Colors";
-            // 
-            // redGreenToolStripMenuItem
-            // 
-            this.redGreenToolStripMenuItem.Name = "redGreenToolStripMenuItem";
-            this.redGreenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.redGreenToolStripMenuItem.Text = "RedGreen";
-            this.redGreenToolStripMenuItem.Click += new System.EventHandler(this.ColorSelected);
-            // 
-            // blueGreenToolStripMenuItem
-            // 
-            this.blueGreenToolStripMenuItem.Name = "blueGreenToolStripMenuItem";
-            this.blueGreenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.blueGreenToolStripMenuItem.Text = "BlueGreen";
-            this.blueGreenToolStripMenuItem.Click += new System.EventHandler(this.ColorSelected);
-            // 
             // MandelbrotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,12 +96,20 @@ namespace Mandelbrot
 
         }
 
-        public void CreateControls()
+        public void CreateCustomControls()
         {
             this.centerX = CreateControl(20, 30, 0.0, "centerX", "Middelste x:");
             this.centerY = CreateControl(20, 50, 0.0, "centerY", "Middelste y:");
-            this.scale = CreateControl(300, 30, 0.001, "scale", "Schaal:");
-            this.max = CreateControl(300, 50, 100, "max", "Max:", false);
+            this.scale = CreateControl(200, 30, 0.001, "scale", "Schaal:");
+            this.max = CreateControl(200, 50, 100, "max", "Max:", false);
+
+            AddPresetOptions();
+            AddColorOpions();
+            CreateGoButton();
+        }
+
+        private void AddPresetOptions()
+        {
             foreach (var preset in PresetsHandler.presets)
             {
                 ToolStripMenuItem menuItem = new ToolStripMenuItem()
@@ -129,19 +117,33 @@ namespace Mandelbrot
                     Name = preset.Name,
                     Size = new Size(152, 22),
                     Text = preset.Name,
-                    
+
                 };
                 menuItem.Click += new EventHandler(this.PresetSelected);
 
                 this.presetToolStripMenuItem.DropDownItems.Add(menuItem);
             }
-            CreateGoButton();
         }
 
-        private void CreatePresetMenuItem(Preset preset)
+        private void AddColorOpions()
         {
-            throw new NotImplementedException();
+            var schemes = Enum.GetValues(typeof(ColorSchemes));
+
+            foreach (var scheme in schemes)
+            {
+                ToolStripMenuItem menuItem = new ToolStripMenuItem()
+                {
+                    Name = scheme.ToString(),
+                    Size = new Size(152, 22),
+                    Text = scheme.ToString(),
+
+                };
+                menuItem.Click += new EventHandler(this.ColorSelected);
+
+                this.colorsToolStripMenuItem.DropDownItems.Add(menuItem);
+            }
         }
+
 
         /// <summary>
         /// Create the go button for the form.
@@ -150,7 +152,7 @@ namespace Mandelbrot
         {
             var goButton = new Button() { Text = "Go!" };
             goButton.Click += HandleGoButtonClick;
-            goButton.Location = new Point(20, 100);
+            goButton.Location = new Point(400, 30);
 
             this.Controls.Add(goButton);
         }
@@ -170,7 +172,8 @@ namespace Mandelbrot
             Label Description = new Label()
             {
                 Text = label,
-                Location = new Point(x, y)
+                Location = new Point(x, y),
+                Width = 70
             };
 
             this.Controls.Add(Description);
@@ -178,7 +181,7 @@ namespace Mandelbrot
             //Nummerbox with its properties
             TextBox ValueBox = new TextBox()
             {
-                Location = new Point(Description.Width + 10 + x, y),
+                Location = new Point(Description.Width + 5 + x, y),
                 Size = new Size(100, 20),
                 Text = value.ToString(),
                 Name = name
@@ -195,8 +198,6 @@ namespace Mandelbrot
         private ToolStripMenuItem ImageMenuItem;
         private ToolStripMenuItem presetToolStripMenuItem;
         private ToolStripMenuItem colorsToolStripMenuItem;
-        private ToolStripMenuItem redGreenToolStripMenuItem;
-        private ToolStripMenuItem blueGreenToolStripMenuItem;
     }
 }
 

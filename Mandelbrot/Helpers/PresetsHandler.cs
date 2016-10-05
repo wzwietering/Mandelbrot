@@ -17,7 +17,7 @@ namespace Mandelbrot
                         CenterY = 0.342581103686523,
                         Scale = 1.70909423828125E-06,
                         Max = 200,
-                        ColorScheme = "RedGreen"
+                        ColorScheme = ColorSchemes.RedGreen
                     }
                 }
             },
@@ -29,7 +29,7 @@ namespace Mandelbrot
                         CenterY = 0.57427734375,
                         Scale = 1.953125E-06,
                         Max = 200,
-                        ColorScheme = "BlueGreen"
+                        ColorScheme = ColorSchemes.BlueGreen
                     }
                 },
             {
@@ -41,7 +41,7 @@ namespace Mandelbrot
                         CenterY = -1.6,
                         Scale = 0.005,
                         Max = 1000,
-                        ColorScheme = "BlueGreen"
+                        ColorScheme = ColorSchemes.BlueGreen
                     }
                 }
             },
@@ -54,7 +54,7 @@ namespace Mandelbrot
                         CenterY = 0.343060077346802,
                         Scale = 1.06818389892578E-07,
                         Max = 200,
-                        ColorScheme = "MultiColor"
+                        ColorScheme = ColorSchemes.MultiColor
                     }
                 }
             },
@@ -67,7 +67,7 @@ namespace Mandelbrot
                         CenterY = -0.134127125,
                         Scale = 1.019140625E-05,
                         Max = 2500,
-                        ColorScheme = "BlueGreen"
+                        ColorScheme = ColorSchemes.BlueGreen
                     }
                 }
             }

@@ -3,6 +3,13 @@ using System.Drawing;
 
 namespace Mandelbrot
 {
+    public enum ColorSchemes
+    {
+        RedGreen,
+        RedBlue,
+        BlueGreen,
+        MultiColor,
+    }
     public class ColorPicker
     {
         /// <summary>
@@ -11,18 +18,18 @@ namespace Mandelbrot
         /// <param name="mandelNumber">The mandel number</param>
         /// <param name="modifier">Modifies the colors</param>
         /// <returns>A <see cref="Color"/> </returns>
-        public static Color GetColor(int mandelNumber, string colorScheme)
+        public static Color GetColor(int mandelNumber, ColorSchemes colorScheme)
         {
             switch (colorScheme)
             {
-                case "RedGreen":
+                case ColorSchemes.RedGreen:
                     return GetRedgreen(mandelNumber);
-                case "RedBlue":
+                case ColorSchemes.RedBlue:
                     return GetRedBlue(mandelNumber);
-                case "BlueGreen":
+                case ColorSchemes.BlueGreen:
                     return GetBlueGreen(mandelNumber);
                 default:
-                case "MultiColor":
+                case ColorSchemes.MultiColor:
                     return GetMultiColor(mandelNumber);
             }
         }
