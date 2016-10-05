@@ -131,5 +131,10 @@ namespace Mandelbrot
         {
 
         }
+
+        private void preset1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
