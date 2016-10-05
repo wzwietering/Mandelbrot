@@ -70,6 +70,12 @@ namespace Mandelbrot
             InputHandler.SaveImage(this);
         }
 
+        private void PresetSelected(object sender, EventArgs e)
+        {
+            this.UserInputParameters = PresetsHandler.GetPresets(((ToolStripMenuItem)sender).Text);
+            InputHandler.StartNewImageThread(this);
+        }
+
         /// <summary>
         /// Create the controls for the form.
         /// </summary>
@@ -116,16 +122,12 @@ namespace Mandelbrot
             this.Controls.Add(Description);
 
             //Nummerbox with its properties
-            NumericUpDown ValueBox = new NumericUpDown()
+            TextBox ValueBox = new TextBox()
             {
                 Location = new Point(Description.Width + 20 + x, y),
                 Size = new Size(100, 20),
                 Text = value.ToString(),
-                Name = name,
-                DecimalPlaces = hasDecimalValues ? 8 : 0,
-                Increment = hasDecimalValues ? 0.01m : 1,
-                Minimum = hasDecimalValues  ? - 100 : 0,
-                Maximum = 1000,
+                Name = name
             };
 
             this.Controls.Add(ValueBox);

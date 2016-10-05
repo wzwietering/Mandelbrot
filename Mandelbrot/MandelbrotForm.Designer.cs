@@ -77,12 +77,14 @@
             this.mooiToolStripMenuItem.Name = "mooiToolStripMenuItem";
             this.mooiToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.mooiToolStripMenuItem.Text = "Mooi";
+            this.mooiToolStripMenuItem.Click += new System.EventHandler(PresetSelected);
             // 
             // nogMooierToolStripMenuItem
             // 
             this.nogMooierToolStripMenuItem.Name = "nogMooierToolStripMenuItem";
             this.nogMooierToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.nogMooierToolStripMenuItem.Text = "Nog mooier";
+            this.nogMooierToolStripMenuItem.Click += PresetSelected;
             // 
             // MandelbrotForm
             // 
