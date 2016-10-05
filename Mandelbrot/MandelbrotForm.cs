@@ -65,6 +65,12 @@ namespace Mandelbrot
             InputHandler.HandleGoButtonClick(this);
         }
 
+        private void PresetSelected(object sender, EventArgs e)
+        {
+            this.UserInputParameters = PresetsHandler.GetPresets(((ToolStripMenuItem)sender).Text);
+            InputHandler.StartNewImageThread(this);
+        }
+
         /// <summary>
         /// Create the controls for the form.
         /// </summary>
@@ -121,16 +127,6 @@ namespace Mandelbrot
 
             this.Controls.Add(ValueBox);
             return ValueBox;
-        }
-
-        private void preset2ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void preset1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

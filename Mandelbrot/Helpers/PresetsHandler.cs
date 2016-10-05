@@ -10,24 +10,24 @@ namespace Mandelbrot
         {
             {
                 new Preset() {
-                    Name = "Preset1",
+                    Name = "Mooi",
                     InputParameters = new UserInputParameters()
                     {
                         CenterX = 0.437853515625,
                         CenterY = 0.34181884765625,
-                        Scale = 0.34181884765625,
+                        Scale = 0.34181884765625E-5,
                         Max = 200
                     }
                 }
             },
             {
                 new Preset() {
-                    Name = "Preset2",
+                    Name = "Nog mooier",
                     InputParameters = new UserInputParameters()
                     {
-                        CenterX = 1.6,
-                        CenterY = 1.6,
-                        Scale = 0.05,
+                        CenterX = -1.6,
+                        CenterY = -1.6,
+                        Scale = 0.005,
                         Max = 1000
                     }
                 }

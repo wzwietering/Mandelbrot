@@ -61,7 +61,7 @@
             this.preset1ToolStripMenuItem.Name = "preset1ToolStripMenuItem";
             this.preset1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.preset1ToolStripMenuItem.Text = "Save";
-            this.preset1ToolStripMenuItem.Click += new System.EventHandler(this.preset1ToolStripMenuItem_Click);
+          //  this.preset1ToolStripMenuItem.Click += new System.EventHandler(this.preset1ToolStripMenuItem_Click);
             // 
             // presetToolStripMenuItem
             // 
@@ -77,12 +77,14 @@
             this.mooiToolStripMenuItem.Name = "mooiToolStripMenuItem";
             this.mooiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.mooiToolStripMenuItem.Text = "Mooi";
+            this.mooiToolStripMenuItem.Click += new System.EventHandler(PresetSelected);
             // 
             // nogMooierToolStripMenuItem
             // 
             this.nogMooierToolStripMenuItem.Name = "nogMooierToolStripMenuItem";
             this.nogMooierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.nogMooierToolStripMenuItem.Text = "Nog mooier";
+            this.nogMooierToolStripMenuItem.Click += PresetSelected;
             // 
             // MandelbrotForm
             // 
