@@ -1,5 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using Mandelbrot.Models;
 
 namespace Mandelbrot
 {
@@ -35,13 +37,9 @@ namespace Mandelbrot
             this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mooiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nogMooierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blueGreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ookMooiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.maaikeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,29 +73,10 @@ namespace Mandelbrot
             // 
             // presetToolStripMenuItem
             // 
-            this.presetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mooiToolStripMenuItem,
-            this.nogMooierToolStripMenuItem,
-            this.ookMooiToolStripMenuItem,
-            this.maaikeToolStripMenuItem});
             this.presetToolStripMenuItem.Name = "presetToolStripMenuItem";
             this.presetToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.presetToolStripMenuItem.Text = "Preset";
-            // 
-            // mooiToolStripMenuItem
-            // 
-            this.mooiToolStripMenuItem.Name = "mooiToolStripMenuItem";
-            this.mooiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.mooiToolStripMenuItem.Text = "Mooi";
-            this.mooiToolStripMenuItem.Click += new System.EventHandler(this.PresetSelected);
-            // 
-            // nogMooierToolStripMenuItem
-            // 
-            this.nogMooierToolStripMenuItem.Name = "nogMooierToolStripMenuItem";
-            this.nogMooierToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.nogMooierToolStripMenuItem.Text = "Nog mooier";
-            this.nogMooierToolStripMenuItem.Click += new System.EventHandler(this.PresetSelected);
-            // 
+            
             // colorsToolStripMenuItem
             // 
             this.colorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -121,20 +100,6 @@ namespace Mandelbrot
             this.blueGreenToolStripMenuItem.Text = "BlueGreen";
             this.blueGreenToolStripMenuItem.Click += new System.EventHandler(this.ColorSelected);
             // 
-            // ookMooiToolStripMenuItem
-            // 
-            this.ookMooiToolStripMenuItem.Name = "ookMooiToolStripMenuItem";
-            this.ookMooiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.ookMooiToolStripMenuItem.Text = "Ook mooi";
-            this.ookMooiToolStripMenuItem.Click += new System.EventHandler(this.PresetSelected);
-            // 
-            // maaikeToolStripMenuItem
-            // 
-            this.maaikeToolStripMenuItem.Name = "maaikeToolStripMenuItem";
-            this.maaikeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.maaikeToolStripMenuItem.Text = "Maaike";
-            this.maaikeToolStripMenuItem.Click += new System.EventHandler(this.PresetSelected);
-            // 
             // MandelbrotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,8 +122,25 @@ namespace Mandelbrot
             this.centerY = CreateControl(20, 50, 0.0, "centerY", "Middelste y:");
             this.scale = CreateControl(300, 30, 0.001, "scale", "Schaal:");
             this.max = CreateControl(300, 50, 100, "max", "Max:", false);
+            foreach (var preset in PresetsHandler.presets)
+            {
+                ToolStripMenuItem menuItem = new ToolStripMenuItem()
+                {
+                    Name = preset.Name,
+                    Size = new Size(152, 22),
+                    Text = preset.Name,
+                    
+                };
+                menuItem.Click += new EventHandler(this.PresetSelected);
 
+                this.presetToolStripMenuItem.DropDownItems.Add(menuItem);
+            }
             CreateGoButton();
+        }
+
+        private void CreatePresetMenuItem(Preset preset)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -208,17 +190,13 @@ namespace Mandelbrot
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem imageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ImageMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem presetToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mooiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nogMooierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem colorsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem redGreenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem blueGreenToolStripMenuItem;
-        private ToolStripMenuItem ookMooiToolStripMenuItem;
-        private ToolStripMenuItem maaikeToolStripMenuItem;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem imageToolStripMenuItem;
+        private ToolStripMenuItem ImageMenuItem;
+        private ToolStripMenuItem presetToolStripMenuItem;
+        private ToolStripMenuItem colorsToolStripMenuItem;
+        private ToolStripMenuItem redGreenToolStripMenuItem;
+        private ToolStripMenuItem blueGreenToolStripMenuItem;
     }
 }
 

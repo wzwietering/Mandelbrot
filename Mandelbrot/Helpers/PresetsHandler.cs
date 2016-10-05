@@ -6,7 +6,7 @@ namespace Mandelbrot
 {
     public static class PresetsHandler
     {
-        private static List<Preset> presets = new List<Preset>()
+        public static List<Preset> presets = new List<Preset>()
         {
             {
                 new Preset() {
@@ -52,14 +52,25 @@ namespace Mandelbrot
                     Name = "Maaike",
                     InputParameters = new UserInputParameters()
                     {
-                        CenterX = -0.7439715,
-                        CenterY = -0.13926359375,
-                        Scale = 2.03828125E-05,
+                        CenterX = -0.7463970546875,
+                        CenterY = -0.134127125,
+                        Scale = 1.019140625E-05,
                         Max = 2500,
                         ColorScheme = "BlueGreen"
                     }
                 }
-            }
+            },
+            new Preset(){
+                    Name = "Blobs",
+                    InputParameters = new UserInputParameters()
+                    {
+                        CenterX = 0.33695703125,
+                        CenterY = 0.57427734375,
+                        Scale = 1.953125E-06,
+                        Max = 200,
+                        ColorScheme = "BlueGreen"
+                    }
+                }
         };
 
         public static UserInputParameters GetPresets(string presetName)
