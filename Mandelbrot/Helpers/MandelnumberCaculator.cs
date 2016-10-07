@@ -22,7 +22,7 @@ namespace Mandelbrot
             double a = 0;
             double b = 0;
 
-            while (distance < 2 && mandelNumber < max)
+            while (distance < 10 && mandelNumber < max)
             {
                 var newA = (a * a - b * b) + x;
                 var newB = 2 * a * b + y;
