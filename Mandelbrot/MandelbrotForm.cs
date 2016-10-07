@@ -63,11 +63,19 @@ namespace Mandelbrot
             this.MouseClick += HandleMouseClick;
             this.KeyDown += HandleKeypress;
             this.MouseWheel += HandleScroll;
+            this.Shown += ShowFirstImage;
+        }
 
+        /// <summary>
+        /// Display a preset startup image.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowFirstImage(object sender, EventArgs e)
+        {
             // Use the first of our presets to render a nice image to start with.
             this.UserInputParameters = PresetsHandler.presets.First().InputParameters;
             InputHandler.StartNewImageThread(this);
-            SetColorPicker();
         }
 
         /// <summary>

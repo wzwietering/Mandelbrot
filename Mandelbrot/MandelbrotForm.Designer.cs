@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Mandelbrot.Models;
+using System.Linq;
 //using System.Windows.Controls;
 
 namespace Mandelbrot
@@ -113,6 +114,7 @@ namespace Mandelbrot
             this.colorPicker.Name = "colorPicker";
             this.colorPicker.Size = new System.Drawing.Size(112, 24);
             this.colorPicker.TabIndex = 1;
+            this.colorPicker.Text = PresetsHandler.presets.First().InputParameters.ColorScheme.ToString();
             // 
             // label1
             // 
