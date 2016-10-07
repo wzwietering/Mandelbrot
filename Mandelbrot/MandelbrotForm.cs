@@ -130,7 +130,7 @@ namespace Mandelbrot
             var aboutform = new About();
         }
 
-        // user clicked help > user guide
+        // User clicked help > user guide
         private void userGuide_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Models.Constants.userGuideText);

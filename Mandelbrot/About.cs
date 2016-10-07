@@ -111,5 +111,13 @@ namespace Mandelbrot
             }
         }
         #endregion
+
+        /// <summary>
+        /// Link to the source code!
+        /// </summary>
+        private void ClickLink(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/wzwietering/Mandelbrot");
+        }
     }
 }
