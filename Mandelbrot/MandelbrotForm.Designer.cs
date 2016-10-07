@@ -65,7 +65,7 @@ namespace Mandelbrot
             // ImageMenuItem
             // 
             this.ImageMenuItem.Name = "ImageMenuItem";
-            this.ImageMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ImageMenuItem.Size = new System.Drawing.Size(98, 22);
             this.ImageMenuItem.Text = "Save";
             this.ImageMenuItem.Click += new System.EventHandler(this.HandleSaveClick);
             // 
@@ -78,9 +78,9 @@ namespace Mandelbrot
             // colorPicker
             // 
             this.colorPicker.FormattingEnabled = true;
-            this.colorPicker.Location = new System.Drawing.Point(477, 30);
+            this.colorPicker.Location = new System.Drawing.Point(400, 30);
             this.colorPicker.Name = "colorPicker";
-            this.colorPicker.Size = new System.Drawing.Size(95, 21);
+            this.colorPicker.Size = new System.Drawing.Size(85, 21);
             this.colorPicker.TabIndex = 1;
             // 
             // MandelbrotForm
@@ -103,9 +103,9 @@ namespace Mandelbrot
         public void CreateCustomControls()
         {
             this.centerX = CreateControl(20, 30, 0.0, "centerX", "Center x:");
-            this.centerY = CreateControl(20, 50, 0.0, "centerY", "Center y:");
+            this.centerY = CreateControl(20, 52, 0.0, "centerY", "Center y:");
             this.scale = CreateControl(200, 30, 0.001, "scale", "Scale:");
-            this.max = CreateControl(200, 50, 100, "max", "Max:", false);
+            this.max = CreateControl(200, 52, 100, "max", "Max:", false);
 
             AddPresetOptions();
             AddColorOpions();
@@ -153,7 +153,8 @@ namespace Mandelbrot
         {
             var goButton = new Button() { Text = "Go!" };
             goButton.Click += HandleGoButtonClick;
-            goButton.Location = new Point(400, 30);
+            goButton.Location = new Point(500, 30);
+            goButton.Width = 50;
 
             this.Controls.Add(goButton);
         }
