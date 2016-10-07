@@ -70,9 +70,10 @@ namespace Mandelbrot
 
         private static Color GetRedBlue(int mandelNumber)
         {
-            int red = (mandelNumber * 20) % 255;
-            int blue = (mandelNumber * 20) % 765 / 3;
-            var color = Color.FromArgb(255, red, 0, blue);
+            int red = 255- (mandelNumber * 11) % 255;
+            int blue =  (mandelNumber * 31) % 765 / 3;
+            int green = (mandelNumber * 9) % 100 ;
+            var color = Color.FromArgb(255, red, green, blue);
             return color;
         }
     }
