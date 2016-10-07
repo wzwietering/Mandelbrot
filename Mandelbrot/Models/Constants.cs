@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mandelbrot.Models
+﻿namespace Mandelbrot.Models
 {
     /// <summary>
     /// This class creates some constant values, for example long texts, because we don't want this
@@ -18,12 +12,12 @@ beautiful images based on the mandelbrot formula!
 
 Try some preset images from the top menu > presets, or play around using the following hotkeys:
 
-Left mouse button:     zoom in towards the spot you clicked.
-Right mouse button:    zoom out towards te spot you clicked.
-Ctrl + minus:          zoom out.
-Ctrl + Shift + plus:   zoom in.
-Ctrl + arrow keys:     move around.
-Mousewheel:            zoom.
+Left mouse button: zoom in towards the spot you clicked.
+Right mouse button: zoom out towards te spot you clicked.
+Ctrl + minus: zoom out.
+Ctrl + Shift + plus: zoom in.
+Ctrl + arrow keys: move around.
+Mousewheel: zoom.
             
 You can change the color settings using the colorscheme dropdown, and you can also enter your own values into the boxes for x- and y-coordinates, scale and max value. 
 

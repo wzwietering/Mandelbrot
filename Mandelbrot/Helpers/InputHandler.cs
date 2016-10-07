@@ -14,14 +14,21 @@ namespace Mandelbrot
     /// </summary>
     class InputHandler
     {
-        public ImageDrawer ImageDrawer { get; private set; }
+        /// <summary>
+        /// The last rendered image that is currently displayed in the form.
+        /// </summary>
+        private Image CurrentImage;
 
-        public InputHandler()
-        {
-            this.ImageDrawer = new ImageDrawer();
-        }
+        //The image is rendered lower than the top of the form because of the ui, this variable declares how much.
+        private int imageOffset = 80;
 
-        private Thread renderingImage;
+        /// <summary>
+        /// The image gets rendered in a new thread: renderingImageThread. We want to
+        /// keep track of this thread, because if the user clicks multiple times, 
+        /// we only need to render an image for the last click. 
+        /// (thus, we simply abort the current renderingImageThread and make a new one).
+        /// </summary>
+        private Thread renderingImageThread;
 
         /// <summary>
         /// The user has clicked the image somewhere. Zoom in to the point where the user clicked:
@@ -99,11 +106,11 @@ namespace Mandelbrot
         {
             if (e.Delta > 0)
             {
-                Zoom(form, e.X, e.Y, 0.5);
+                Zoom(form, e.X, e.Y, 0.8);
             }
             else
             {
-                Zoom(form, e.X, e.Y, 2);
+                Zoom(form, e.X, e.Y, 1.25);
             }
         }
 
@@ -142,6 +149,8 @@ namespace Mandelbrot
         internal void HandleGoButtonClick(MandelbrotForm form)
         {
             StartNewImageThread(form);
+
+            // The input parameters might have changed, so reset them in the form so the text boxes will be updated.
             form.UserInputParameters = form.UserInputParameters;
         }
 
@@ -152,41 +161,41 @@ namespace Mandelbrot
         /// <param name="e"></param>
         public void StartNewImageThread(MandelbrotForm form)
         {
-            if (renderingImage != null && renderingImage.IsAlive)
+            // A thread is still running. We don't need it anymore because the user changes the parameters.
+            if (renderingImageThread != null && renderingImageThread.IsAlive)
             {
-                renderingImage.Abort();
+                // ... thus, we abort.
+                renderingImageThread.Abort();
             }
 
-            renderingImage = new Thread(() => CreateMandelbrotImage(form));
-            renderingImage.IsBackground = true;
-            renderingImage.Start();
+            // ... and start a new thread
+            renderingImageThread = new Thread(() => DrawMandelbrotImage(form));
+            renderingImageThread.IsBackground = true;
+            renderingImageThread.Start();
         }
 
-        //The image is rendered lower than the top of the form because of the ui, this variable declares how much.
-        public int imageOffset = 80;
-
         /// <summary>
-        /// Create a new image and set as the form background.
+        /// Draw a new mandelbrot image in the form.
         /// </summary>
         /// <param name="form">The form we want to create an image for.</param>
-        private void CreateMandelbrotImage(MandelbrotForm form)
+        private void DrawMandelbrotImage(MandelbrotForm form)
         {
             Graphics g = form.CreateGraphics();
-            var image = (Image)ImageDrawer.DrawImage(form.Height - imageOffset, form.Width, form.UserInputParameters);
-            g.DrawImage(image, 0, imageOffset, image.Width, image.Height);
+            CurrentImage = (Image)ImageDrawer.DrawImage(form.Height - imageOffset, form.Width, form.UserInputParameters);
+            g.DrawImage(CurrentImage, 0, imageOffset, CurrentImage.Width, CurrentImage.Height);
         }
 
         /// <summary>
         /// This method saves the Mandelbrot drawing to a file
         /// </summary>
-        /// <param name="form">The form is required to retrieve the image</param>
-        public void SaveImage(MandelbrotForm form)
+        public void SaveImage()
         {
-            Image background = (Image)ImageDrawer.DrawImage(form.Height - imageOffset, form.Width, form.UserInputParameters);
+            Image background = CurrentImage;
 
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Title = "Save Image";
             sfd.Filter = "PNG|*.png|JPEG|*.jpg|Bitmap Image|*.bmp";
+            sfd.FileName = "Mandelbrot image";
             sfd.ShowDialog();
 
             try

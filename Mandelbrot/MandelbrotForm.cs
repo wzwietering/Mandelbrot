@@ -14,10 +14,10 @@ namespace Mandelbrot
         public Control centerY;
         public Control scale;
         public Control max;
-
         public ColorSchemes ColorScheme = ColorSchemes.MultiColor;
+
         /// <summary>
-        /// The inputhandler. Handles the form input (no shit, sherlock).
+        /// The inputhandler. Form input is passed to the InputHandler to be handled.
         /// </summary>
         internal InputHandler InputHandler { get; private set; }
 
@@ -107,7 +107,7 @@ namespace Mandelbrot
 
         private void HandleSaveClick(object sender, EventArgs e)
         {
-            InputHandler.SaveImage(this);
+            InputHandler.SaveImage();
         }
 
         // User selected a preset. Render it!
