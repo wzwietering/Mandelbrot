@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Mandelbrot.Models;
+//using System.Windows.Controls;
 
 namespace Mandelbrot
 {
@@ -37,7 +38,7 @@ namespace Mandelbrot
             this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorPicker = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,8 +47,7 @@ namespace Mandelbrot
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.imageToolStripMenuItem,
-            this.presetToolStripMenuItem,
-            this.colorsToolStripMenuItem});
+            this.presetToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(584, 24);
@@ -65,7 +65,7 @@ namespace Mandelbrot
             // ImageMenuItem
             // 
             this.ImageMenuItem.Name = "ImageMenuItem";
-            this.ImageMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.ImageMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ImageMenuItem.Text = "Save";
             this.ImageMenuItem.Click += new System.EventHandler(this.HandleSaveClick);
             // 
@@ -75,17 +75,20 @@ namespace Mandelbrot
             this.presetToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.presetToolStripMenuItem.Text = "Presets";
             // 
-            // colorsToolStripMenuItem
+            // colorPicker
             // 
-            this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
-            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.colorsToolStripMenuItem.Text = "Colors";
+            this.colorPicker.FormattingEnabled = true;
+            this.colorPicker.Location = new System.Drawing.Point(477, 30);
+            this.colorPicker.Name = "colorPicker";
+            this.colorPicker.Size = new System.Drawing.Size(95, 21);
+            this.colorPicker.TabIndex = 1;
             // 
             // MandelbrotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 641);
+            this.Controls.Add(this.colorPicker);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MandelbrotForm";
@@ -99,9 +102,9 @@ namespace Mandelbrot
 
         public void CreateCustomControls()
         {
-            this.centerX = CreateControl(20, 30, 0.0, "centerX", "Middelste x:");
-            this.centerY = CreateControl(20, 50, 0.0, "centerY", "Middelste y:");
-            this.scale = CreateControl(200, 30, 0.001, "scale", "Schaal:");
+            this.centerX = CreateControl(20, 30, 0.0, "centerX", "Center x:");
+            this.centerY = CreateControl(20, 50, 0.0, "centerY", "Center y:");
+            this.scale = CreateControl(200, 30, 0.001, "scale", "Scale:");
             this.max = CreateControl(200, 50, 100, "max", "Max:", false);
 
             AddPresetOptions();
@@ -132,17 +135,14 @@ namespace Mandelbrot
 
             foreach (var scheme in schemes)
             {
-                ToolStripMenuItem menuItem = new ToolStripMenuItem()
+                System.Windows.Controls.ComboBoxItem menuItem = new System.Windows.Controls.ComboBoxItem()
                 {
-                    Name = scheme.ToString(),
-                    Size = new Size(152, 22),
-                    Text = scheme.ToString(),
-
+                    Name = scheme.ToString()
                 };
-                menuItem.Click += new EventHandler(this.ColorSelected);
 
-                this.colorsToolStripMenuItem.DropDownItems.Add(menuItem);
+                this.colorPicker.Items.Add(menuItem.Name);
             }
+            colorPicker.SelectedIndexChanged += new EventHandler(this.ColorSelected);
         }
 
 
@@ -198,7 +198,7 @@ namespace Mandelbrot
         private ToolStripMenuItem imageToolStripMenuItem;
         private ToolStripMenuItem ImageMenuItem;
         private ToolStripMenuItem presetToolStripMenuItem;
-        private ToolStripMenuItem colorsToolStripMenuItem;
+        private ComboBox colorPicker;
     }
 }
 

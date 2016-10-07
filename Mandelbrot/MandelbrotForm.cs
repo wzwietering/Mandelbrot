@@ -90,7 +90,7 @@ namespace Mandelbrot
 
         private void ColorSelected(object sender, EventArgs e)
         {
-            this.ColorScheme = (ColorSchemes)Enum.Parse(typeof(ColorSchemes), ((ToolStripMenuItem)sender).Text);
+            this.ColorScheme = (ColorSchemes)Enum.Parse(typeof(ColorSchemes), ((ComboBox)sender).Text);
             InputHandler.StartNewImageThread(this);
         }
     }
