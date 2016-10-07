@@ -27,7 +27,7 @@ namespace Mandelbrot
             int bitmapW = bitmapData.Width;
             byte* address = (byte*)bitmapData.Scan0;
 
-            //Parallel.For improves speed by about 70% compared to a normal for loop.
+            //Parallel.For improves speed a lot compared to a normal for loop.
             Parallel.For(0, bitmapH, y =>
             {
                 Parallel.For(0, bitmapW, x =>

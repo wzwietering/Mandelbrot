@@ -41,6 +41,8 @@ namespace Mandelbrot
             }
         }
 
+        //Below this comment you can find all the color calculations
+
         private static Color GetMultiColor(int mandelNumber)
         {
             int red = (int)(mandelNumber % 255);

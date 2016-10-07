@@ -143,6 +143,9 @@ namespace Mandelbrot
 
         }
 
+        /// <summary>
+        /// Over here you see the creation of the user interface
+        /// </summary>
         public void CreateCustomControls()
         {
             this.centerX = CreateControl(20, 30, 0.0, "centerX", "Center x:");
@@ -155,6 +158,9 @@ namespace Mandelbrot
             CreateGoButton();
         }
 
+        /// <summary>
+        /// The addition of the presets to the menu
+        /// </summary>
         private void AddPresetOptions()
         {
             foreach (var preset in PresetsHandler.presets)
@@ -172,6 +178,9 @@ namespace Mandelbrot
             }
         }
 
+        /// <summary>
+        /// The addition of the colors to the combobox
+        /// </summary>
         private void AddColorOpions()
         {
             var schemes = Enum.GetValues(typeof(ColorSchemes));
