@@ -21,13 +21,21 @@ namespace Mandelbrot
         /// <summary>
         /// The user has clicked the image somewhere. Zoom in to the point where the user clicked:
         /// Take the coordinates of the click event and set these as the new center coordinates of the image. 
-        /// Also enlarge 2x (so devide scale by 2).
+        /// Also if the left button was clicked: zoom in 2x (scale * 0.5).
+        /// If the right button was clicked: zoom out (scale * 2)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void HandleMouseClick(MandelbrotForm form, MouseEventArgs e)
         {
-            Zoom(form, e.X, e.Y, 0.5);
+            if (e.Button == MouseButtons.Left)
+            {
+                Zoom(form, e.X, e.Y, 0.5);
+            }
+            if(e.Button == MouseButtons.Right)
+            {
+                Zoom(form, e.X, e.Y, 2);
+            }
         }
 
         /// <summary>
