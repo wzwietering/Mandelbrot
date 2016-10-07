@@ -31,7 +31,10 @@ namespace Mandelbrot
         }
 
         /// <summary>
-        /// The user has user a hotkey (ctrl + minus, plus, or an arrow key). Zoom in/out or move the image around according.
+        /// The user has pressed a hotkey (ctrl + minus, plus, or an arrow key).
+        /// __________________________________________________________
+        /// |~~~~~~ Zoom in, zoom out, and move it all around! ~~~~~~|
+        /// |________________________________________________________|
         /// </summary>
         /// <param name="form">The mandelbrot form</param>
         /// <param name="e">The keypress event</param>
@@ -41,32 +44,37 @@ namespace Mandelbrot
             {
                 HandleGoButtonClick(form);
             }
+            // Ctrl + minus --> zoom out
             if (e.KeyCode == Keys.OemMinus && e.Modifiers == Keys.Control)
             {
                 Zoom(form, form.Width / 2, form.Height / 2, 2);
             }
+            // Ctrl + Shift + plus --> zoom in
             if ((e.KeyCode == Keys.Oemplus || e.KeyCode == Keys.Add)
                 && e.Modifiers == (Keys.Control | Keys.Shift))
             {
                 Zoom(form, form.Width / 2, form.Height / 2, 0.5);
             }
+            // Go left
             if (e.KeyCode == Keys.Left && e.Modifiers == Keys.Control)
             {
                 Zoom(form, form.Width / 2 - form.Width / 4, form.Height / 2);
             }
+            // ... and right
             if (e.KeyCode == Keys.Right && e.Modifiers == Keys.Control)
             {
                 Zoom(form, form.Width / 2 + form.Width / 4, form.Height / 2);
             }
+            // ... and up
             if (e.KeyCode == Keys.Up && e.Modifiers == Keys.Control)
             {
                 Zoom(form, form.Width / 2, form.Height / 2 - form.Height / 4);
             }
+            // ... and down!
             if (e.KeyCode == Keys.Down && e.Modifiers == Keys.Control)
             {
                 Zoom(form, form.Width / 2, form.Height / 2 + form.Height / 4);
             }
-            return;
         }
 
         /// <summary>
