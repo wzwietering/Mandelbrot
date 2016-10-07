@@ -27,12 +27,66 @@ namespace Mandelbrot
         /// <param name="e"></param>
         public void HandleMouseClick(MandelbrotForm form, MouseEventArgs e)
         {
+            Zoom(form, e.X, e.Y, 0.5);
+        }
+
+        /// <summary>
+        /// The user has user a hotkey (ctrl + minus, plus, or an arrow key). Zoom in/out or move the image around according.
+        /// </summary>
+        /// <param name="form">The mandelbrot form</param>
+        /// <param name="e">The keypress event</param>
+        internal void HandleKeyPress(MandelbrotForm form, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                HandleGoButtonClick(form);
+            }
+            if (e.KeyCode == Keys.OemMinus && e.Modifiers == Keys.Control)
+            {
+                Zoom(form, form.Width / 2, form.Height / 2, 2);
+            }
+            if ((e.KeyCode == Keys.Oemplus || e.KeyCode == Keys.Add)
+                && e.Modifiers == (Keys.Control | Keys.Shift))
+            {
+                Zoom(form, form.Width / 2, form.Height / 2, 0.5);
+            }
+            if (e.KeyCode == Keys.Left && e.Modifiers == Keys.Control)
+            {
+                Zoom(form, form.Width / 2 - form.Width / 4, form.Height / 2);
+            }
+            if (e.KeyCode == Keys.Right && e.Modifiers == Keys.Control)
+            {
+                Zoom(form, form.Width / 2 + form.Width / 4, form.Height / 2);
+            }
+            if (e.KeyCode == Keys.Up && e.Modifiers == Keys.Control)
+            {
+                Zoom(form, form.Width / 2, form.Height / 2 - form.Height / 4);
+            }
+            if (e.KeyCode == Keys.Down && e.Modifiers == Keys.Control)
+            {
+                Zoom(form, form.Width / 2, form.Height / 2 + form.Height / 4);
+            }
+            return;
+        }
+
+        /// <summary>
+        /// Generic zoom function to zoom the image in/out and move it around
+        /// </summary>
+        /// <param name="form">The mandelbrot form</param>
+        /// <param name="x">The x coordinate that will be in the center of the form. </param>
+        /// <param name="y">The y coordinate that will be in the center of the form. </param>
+        /// <param name="scaleMultiplier">Multiply the scale. When Smaller than 1, we zoom in. When larger than 1, we zoom out.
+        /// Default value is 1, so no zoom. </param>
+        private void Zoom(MandelbrotForm form, int x, int y, double scaleMultiplier = 1)
+        {
             var oldParameters = form.UserInputParameters;
+
+            // Recalculate the user input.
             var newParameters = new UserInputParameters()
             {
-                CenterX = (e.X - form.Width / 4) * oldParameters.Scale + oldParameters.CenterX,
-                CenterY = (e.Y - form.Height / 4) * oldParameters.Scale + oldParameters.CenterY,
-                Scale = oldParameters.Scale / 2,
+                CenterX = (x - form.Width / 2 * scaleMultiplier) * oldParameters.Scale + oldParameters.CenterX,
+                CenterY = (y - form.Height / 2 * scaleMultiplier) * oldParameters.Scale + oldParameters.CenterY,
+                Scale = oldParameters.Scale * scaleMultiplier,
                 Max = oldParameters.Max,
                 ColorScheme = oldParameters.ColorScheme
             };
@@ -92,12 +146,12 @@ namespace Mandelbrot
                 background.Save(fs, System.Drawing.Imaging.ImageFormat.Png);
             }
             //When there is no image, this error is thrown
-            catch(NullReferenceException e)
+            catch (NullReferenceException e)
             {
 
             }
             //This error is thrown when the user cancels the save
-            catch(IndexOutOfRangeException i)
+            catch (IndexOutOfRangeException i)
             {
 
             }

@@ -55,16 +55,22 @@ namespace Mandelbrot
 
         public MandelbrotForm()
         {
+            this.KeyPreview = true;
             this.InputHandler = new InputHandler();
 
             InitializeComponent();
             CreateCustomControls();
 
             this.MouseClick += HandleMouseClick;
-            this.Enter += HandleGoButtonClick;
+            this.KeyDown += HandleKeypress;
 
             this.UserInputParameters = PresetsHandler.presets.First().InputParameters;
             InputHandler.StartNewImageThread(this);
+        }
+
+        private void HandleKeypress(object sender, KeyEventArgs e)
+        {
+            InputHandler.HandleKeyPress(this, e);
         }
 
         private void HandleMouseClick(object sender, MouseEventArgs e)
