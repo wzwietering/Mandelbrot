@@ -126,13 +126,17 @@ namespace Mandelbrot
             t.Start();
         }
 
+        //The image is rendered lower than the top of the form because of the ui, this variable declares how much.
+        public int imageOffset = 80;
+
         /// <summary>
         /// Create a new image and set as the form background.
         /// </summary>
         /// <param name="form">The form we want to create an image for.</param>
         private void CreateMandelbrotImage(MandelbrotForm form)
         {
-            form.BackgroundImage = ImageDrawer.DrawImage(form.Height, form.Width, form.UserInputParameters);
+            Graphics g = form.CreateGraphics();
+            g.DrawImage((Image)ImageDrawer.DrawImage(form.Height - imageOffset, form.Width, form.UserInputParameters), 0, imageOffset);
         }
 
         /// <summary>
@@ -141,7 +145,7 @@ namespace Mandelbrot
         /// <param name="form">The form is required to retrieve the image</param>
         public void SaveImage(MandelbrotForm form)
         {
-            Image background = form.BackgroundImage;
+            Image background = (Image)ImageDrawer.DrawImage(form.Height - imageOffset, form.Width, form.UserInputParameters);
 
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Title = "Save Image";
