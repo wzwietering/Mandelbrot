@@ -34,6 +34,7 @@ namespace Mandelbrot
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MandelbrotForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,7 +107,7 @@ namespace Mandelbrot
             // 
             this.colorPicker.FormattingEnabled = true;
             this.colorPicker.Location = new System.Drawing.Point(400, 30);
-            this.colorPicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.colorPicker.Margin = new System.Windows.Forms.Padding(2);
             this.colorPicker.Name = "colorPicker";
             this.colorPicker.Size = new System.Drawing.Size(85, 21);
             this.colorPicker.TabIndex = 1;
@@ -118,6 +119,7 @@ namespace Mandelbrot
             this.ClientSize = new System.Drawing.Size(584, 641);
             this.Controls.Add(this.colorPicker);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MandelbrotForm";
             this.Text = "Mandelbrot";
