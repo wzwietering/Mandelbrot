@@ -19,10 +19,6 @@ namespace Mandelbrot
         /// <returns>a <see cref="Bitmap"/> with the mandelbrot image. </returns>
         public unsafe Bitmap DrawImage(int height, int width, UserInputParameters parameters)
         {
-            //To test the performance
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-
             //Creation of bitmap, reservation of memory and some useful variables.
             var bitmap = new Bitmap(width, height);
             BitmapData bitmapData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
@@ -56,8 +52,6 @@ namespace Mandelbrot
 
             //Unlocking of memory.
             bitmap.UnlockBits(bitmapData);
-            sw.Stop();
-            System.Console.WriteLine(sw.ElapsedMilliseconds);
             return bitmap;
         }
     }
