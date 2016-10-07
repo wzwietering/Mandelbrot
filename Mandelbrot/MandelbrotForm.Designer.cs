@@ -72,19 +72,20 @@ namespace Mandelbrot
             // presetToolStripMenuItem
             // 
             this.presetToolStripMenuItem.Name = "presetToolStripMenuItem";
-            this.presetToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.presetToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.presetToolStripMenuItem.Text = "Presets";
             // 
-            // presetToolStripMenuItem
+            // colorsToolStripMenuItem
             // 
-            this.colorsToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
+            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.colorsToolStripMenuItem.Text = "Colors";
+            // 
             // MandelbrotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.ClientSize = new System.Drawing.Size(584, 641);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MandelbrotForm";
