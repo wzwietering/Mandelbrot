@@ -38,7 +38,6 @@ namespace Mandelbrot
             this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +51,6 @@ namespace Mandelbrot
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.imageToolStripMenuItem,
             this.presetToolStripMenuItem,
-            this.colorsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -231,7 +229,6 @@ namespace Mandelbrot
         private ToolStripMenuItem ImageMenuItem;
         private ToolStripMenuItem presetToolStripMenuItem;
         private ComboBox colorPicker;
-        private ToolStripMenuItem colorsToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem userGuideToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
