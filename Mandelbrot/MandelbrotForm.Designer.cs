@@ -38,6 +38,9 @@ namespace Mandelbrot
             this.ImageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,10 +50,12 @@ namespace Mandelbrot
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.imageToolStripMenuItem,
             this.presetToolStripMenuItem,
-            this.colorsToolStripMenuItem});
+            this.colorsToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(779, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -59,35 +64,59 @@ namespace Mandelbrot
             this.imageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ImageMenuItem});
             this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
-            this.imageToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.imageToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
             this.imageToolStripMenuItem.Text = "Image";
             // 
             // ImageMenuItem
             // 
             this.ImageMenuItem.Name = "ImageMenuItem";
-            this.ImageMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.ImageMenuItem.Size = new System.Drawing.Size(115, 26);
             this.ImageMenuItem.Text = "Save";
             this.ImageMenuItem.Click += new System.EventHandler(this.HandleSaveClick);
             // 
             // presetToolStripMenuItem
             // 
             this.presetToolStripMenuItem.Name = "presetToolStripMenuItem";
-            this.presetToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.presetToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.presetToolStripMenuItem.Text = "Presets";
             // 
             // colorsToolStripMenuItem
             // 
             this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
-            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
             this.colorsToolStripMenuItem.Text = "Colors";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userGuideToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // userGuideToolStripMenuItem
+            // 
+            this.userGuideToolStripMenuItem.Name = "userGuideToolStripMenuItem";
+            this.userGuideToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.userGuideToolStripMenuItem.Text = "User guide";
+            this.userGuideToolStripMenuItem.Click += new System.EventHandler(this.userGuide_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.about_Click);
             // 
             // MandelbrotForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 641);
+            this.ClientSize = new System.Drawing.Size(779, 789);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MandelbrotForm";
             this.Text = "Mandelbrot";
             this.menuStrip1.ResumeLayout(false);
@@ -199,6 +228,9 @@ namespace Mandelbrot
         private ToolStripMenuItem ImageMenuItem;
         private ToolStripMenuItem presetToolStripMenuItem;
         private ToolStripMenuItem colorsToolStripMenuItem;
+        private ToolStripMenuItem helpToolStripMenuItem;
+        private ToolStripMenuItem userGuideToolStripMenuItem;
+        private ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

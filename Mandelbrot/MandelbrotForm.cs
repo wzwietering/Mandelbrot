@@ -28,6 +28,7 @@ namespace Mandelbrot
         {
             get
             {
+                // Get the input parameters from the form controls.
                 return new UserInputParameters
                 {
                     CenterX = TryGetDouble(centerX.Text, 0),
@@ -39,6 +40,7 @@ namespace Mandelbrot
             }
             set
             {
+                // We have new parameters! Update the form controls accordingly.
                 centerX.Text = value.CenterX.ToString();
                 centerY.Text = value.CenterY.ToString();
                 scale.Text = value.Scale.ToString();
@@ -47,12 +49,9 @@ namespace Mandelbrot
             }
         }
 
-        private double TryGetDouble(string text, double defaultValue)
-        {
-            double.TryParse(text, out defaultValue);
-            return defaultValue;
-        }
-
+        /// <summary>
+        /// Creates a new MandelBrotForm!
+        /// </summary>
         public MandelbrotForm()
         {
             this.KeyPreview = true;
@@ -64,8 +63,22 @@ namespace Mandelbrot
             this.MouseClick += HandleMouseClick;
             this.KeyDown += HandleKeypress;
 
+            // Use the first of our presets to render a nice image to start with.
             this.UserInputParameters = PresetsHandler.presets.First().InputParameters;
             InputHandler.StartNewImageThread(this);
+        }
+
+        /// <summary>
+        /// Try to get a double value from a string. 
+        /// </summary>
+        /// <param name="text">The text </param>
+        /// <param name="defaultValue">Default value, in case the user does something stupid like entering a letter.</param>
+        /// <returns>The double</returns>
+        private double TryGetDouble(string text, double defaultValue)
+        {
+            // Do a tryparse incase user doesn;t enter a numerical value
+            double.TryParse(text, out defaultValue);
+            return defaultValue;
         }
 
         private void HandleKeypress(object sender, KeyEventArgs e)
@@ -98,6 +111,16 @@ namespace Mandelbrot
         {
             this.ColorScheme = (ColorSchemes)Enum.Parse(typeof(ColorSchemes), ((ToolStripMenuItem)sender).Text);
             InputHandler.StartNewImageThread(this);
+        }
+
+        private void about_Click(object sender, EventArgs e)
+        {
+            var aboutform = new About();
+        }
+
+        private void userGuide_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Models.Constants.userGuideText);
         }
     }
 }

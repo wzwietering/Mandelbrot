@@ -47,7 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\ColorConverter.cs" />
+    <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\Preset.cs" />
     <Compile Include="Models\UserInputParameters.cs" />
     <Compile Include="Helpers\InputHandler.cs" />
@@ -62,6 +69,9 @@
     <Compile Include="Helpers\PresetsHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MandelbrotForm.resx">
       <DependentUpon>MandelbrotForm.cs</DependentUpon>
     </EmbeddedResource>
