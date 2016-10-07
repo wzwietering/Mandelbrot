@@ -251,7 +251,7 @@ namespace Mandelbrot
         private ToolStripMenuItem imageToolStripMenuItem;
         private ToolStripMenuItem ImageMenuItem;
         private ToolStripMenuItem presetToolStripMenuItem;
-        private ComboBox colorPicker;
+        public ComboBox colorPicker;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem userGuideToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;

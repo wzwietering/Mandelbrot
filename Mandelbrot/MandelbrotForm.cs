@@ -67,6 +67,7 @@ namespace Mandelbrot
             // Use the first of our presets to render a nice image to start with.
             this.UserInputParameters = PresetsHandler.presets.First().InputParameters;
             InputHandler.StartNewImageThread(this);
+            SetColorPicker();
         }
 
         /// <summary>
@@ -114,6 +115,7 @@ namespace Mandelbrot
         private void PresetSelected(object sender, EventArgs e)
         {
             this.UserInputParameters = PresetsHandler.GetPresets(((ToolStripMenuItem)sender).Text);
+            SetColorPicker();
             InputHandler.StartNewImageThread(this);
         }
 
@@ -134,6 +136,14 @@ namespace Mandelbrot
         private void userGuide_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Models.Constants.userGuideText);
+        }
+
+        /// <summary>
+        /// Updates colorpicker text
+        /// </summary>
+        private void SetColorPicker()
+        {
+            colorPicker.Text = ColorScheme.ToString();
         }
     }
 }
