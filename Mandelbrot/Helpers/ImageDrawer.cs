@@ -19,7 +19,7 @@ namespace Mandelbrot
     /// \______________/
     /// 
     /// </summary>
-    public class ImageDrawer
+    public static class ImageDrawer
     {
         /// <summary>
         /// Create a new mandelbrot image.
@@ -27,7 +27,7 @@ namespace Mandelbrot
         /// <param name="height"> The height that the image will be</param>
         /// <param name="width"> The width that the image will be</param>
         /// <returns>a <see cref="Bitmap"/> with the mandelbrot image. </returns>
-        public unsafe Bitmap DrawImage(int height, int width, UserInputParameters parameters)
+        public static unsafe Bitmap DrawImage(int height, int width, UserInputParameters parameters)
         {
             //Creation of bitmap, reservation of memory and some useful variables.
             var bitmap = new Bitmap(width, height);
