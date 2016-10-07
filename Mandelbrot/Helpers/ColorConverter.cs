@@ -3,6 +3,9 @@ using System.Drawing;
 
 namespace Mandelbrot
 {
+    /// <summary>
+    /// The possible color schemes the user can choose.
+    /// </summary>
     public enum ColorSchemes
     {
         RedGreen,
@@ -10,6 +13,10 @@ namespace Mandelbrot
         BlueGreen,
         MultiColor,
     }
+
+    /// <summary>
+    /// The color picker. This class makes a color, depending on the color scheme that the user selected, and the mandel number.
+    /// </summary>
     public class ColorPicker
     {
         /// <summary>

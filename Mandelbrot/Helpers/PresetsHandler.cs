@@ -4,8 +4,14 @@ using Mandelbrot.Models;
 
 namespace Mandelbrot
 {
+    /// <summary>
+    /// This class had a list of preset items and returns the chosen preset based on the name of the preset.
+    /// </summary>
     public static class PresetsHandler
     {
+       /// <summary>
+       /// All the presets.
+       /// </summary>
         public static List<Preset> presets = new List<Preset>()
         {
             {
@@ -86,6 +92,13 @@ namespace Mandelbrot
             }
         };
 
+        /// <summary>
+        /// Get a preset by name
+        /// </summary>
+        /// <param name="presetName">Name of the preset.</param>
+        /// <returns>
+        /// The preset settings.
+        /// </returns>
         public static UserInputParameters GetPresets(string presetName)
         {
             return presets.Single(x => x.Name == presetName).InputParameters;

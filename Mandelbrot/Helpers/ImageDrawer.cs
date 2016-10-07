@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Mandelbrot
 {
     /// <summary>
-    /// This class draws the bitmap mandelbrot image.
+    /// This class draws the bitmap mandelbrot image. This is where the magic happens!
     /// </summary>
     public class ImageDrawer
     {

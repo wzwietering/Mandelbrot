@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace Mandelbrot
 {
+    /// <summary>
+    /// This class andles all the user input for the mandelbrot form. 
+    /// </summary>
     class InputHandler
     {
         public ImageDrawer ImageDrawer { get; private set; }
@@ -32,7 +35,7 @@ namespace Mandelbrot
             {
                 Zoom(form, e.X, e.Y, 0.5);
             }
-            if(e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
                 Zoom(form, e.X, e.Y, 2);
             }
@@ -82,6 +85,23 @@ namespace Mandelbrot
             if (e.KeyCode == Keys.Down && e.Modifiers == Keys.Control)
             {
                 Zoom(form, form.Width / 2, form.Height / 2 + form.Height / 4);
+            }
+        }
+
+        /// <summary>
+        /// The user scrolled. Use this to zoom in or out, with the mouse location as the new center of the image.
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="e"></param>
+        internal void HandleScroll(MandelbrotForm form, MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                Zoom(form, e.X, e.Y, 0.5);
+            }
+            else
+            {
+                Zoom(form, e.X, e.Y, 2);
             }
         }
 

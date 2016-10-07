@@ -62,6 +62,7 @@ namespace Mandelbrot
 
             this.MouseClick += HandleMouseClick;
             this.KeyDown += HandleKeypress;
+            this.MouseWheel += HandleScroll;
 
             // Use the first of our presets to render a nice image to start with.
             this.UserInputParameters = PresetsHandler.presets.First().InputParameters;
@@ -81,6 +82,9 @@ namespace Mandelbrot
             return defaultValue;
         }
 
+        // Here comes a list of event handlers. They all grab the necessary data and forward it
+        // to the input handler, which does the actual work. 
+
         private void HandleKeypress(object sender, KeyEventArgs e)
         {
             InputHandler.HandleKeyPress(this, e);
@@ -89,6 +93,11 @@ namespace Mandelbrot
         private void HandleMouseClick(object sender, MouseEventArgs e)
         {
             InputHandler.HandleMouseClick(this, e);
+        }
+
+        private void HandleScroll(object sender, MouseEventArgs e)
+        {
+            InputHandler.HandleScroll(this, e);
         }
 
         private void HandleGoButtonClick(object sender, EventArgs e)
@@ -101,23 +110,27 @@ namespace Mandelbrot
             InputHandler.SaveImage(this);
         }
 
+        // User selected a preset. Render it!
         private void PresetSelected(object sender, EventArgs e)
         {
             this.UserInputParameters = PresetsHandler.GetPresets(((ToolStripMenuItem)sender).Text);
             InputHandler.StartNewImageThread(this);
         }
 
+        // User selected a new colorscheme! 
         private void ColorSelected(object sender, EventArgs e)
         {
             this.ColorScheme = (ColorSchemes)Enum.Parse(typeof(ColorSchemes), ((ComboBox)sender).Text);
             InputHandler.StartNewImageThread(this);
         }
 
+        // User clicked help > about
         private void about_Click(object sender, EventArgs e)
         {
             var aboutform = new About();
         }
 
+        // user clicked help > user guide
         private void userGuide_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Models.Constants.userGuideText);
