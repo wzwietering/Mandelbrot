@@ -21,6 +21,8 @@ namespace Mandelbrot
             this.ImageDrawer = new ImageDrawer();
         }
 
+        private Thread renderingImage;
+
         /// <summary>
         /// The user has clicked the image somewhere. Zoom in to the point where the user clicked:
         /// Take the coordinates of the click event and set these as the new center coordinates of the image. 
@@ -150,8 +152,14 @@ namespace Mandelbrot
         /// <param name="e"></param>
         public void StartNewImageThread(MandelbrotForm form)
         {
-            var t = new Thread(() => CreateMandelbrotImage(form));
-            t.Start();
+            if (renderingImage != null && renderingImage.IsAlive)
+            {
+                renderingImage.Abort();
+            }
+
+            renderingImage = new Thread(() => CreateMandelbrotImage(form));
+            renderingImage.IsBackground = true;
+            renderingImage.Start();
         }
 
         //The image is rendered lower than the top of the form because of the ui, this variable declares how much.
