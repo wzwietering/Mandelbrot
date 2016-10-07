@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Mandelbrot.Models;
+//using System.Windows.Controls;
 
 namespace Mandelbrot
 {
@@ -41,6 +42,7 @@ namespace Mandelbrot
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorPicker = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,11 +82,13 @@ namespace Mandelbrot
             this.presetToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.presetToolStripMenuItem.Text = "Presets";
             // 
-            // colorsToolStripMenuItem
+            // colorPicker
             // 
-            this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
-            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
-            this.colorsToolStripMenuItem.Text = "Colors";
+            this.colorPicker.FormattingEnabled = true;
+            this.colorPicker.Location = new System.Drawing.Point(400, 30);
+            this.colorPicker.Name = "colorPicker";
+            this.colorPicker.Size = new System.Drawing.Size(85, 21);
+            this.colorPicker.TabIndex = 1;
             // 
             // helpToolStripMenuItem
             // 
@@ -113,7 +117,8 @@ namespace Mandelbrot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 789);
+            this.ClientSize = new System.Drawing.Size(584, 641);
+            this.Controls.Add(this.colorPicker);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -128,10 +133,10 @@ namespace Mandelbrot
 
         public void CreateCustomControls()
         {
-            this.centerX = CreateControl(20, 30, 0.0, "centerX", "Middelste x:");
-            this.centerY = CreateControl(20, 50, 0.0, "centerY", "Middelste y:");
-            this.scale = CreateControl(200, 30, 0.001, "scale", "Schaal:");
-            this.max = CreateControl(200, 50, 100, "max", "Max:", false);
+            this.centerX = CreateControl(20, 30, 0.0, "centerX", "Center x:");
+            this.centerY = CreateControl(20, 52, 0.0, "centerY", "Center y:");
+            this.scale = CreateControl(200, 30, 0.001, "scale", "Scale:");
+            this.max = CreateControl(200, 52, 100, "max", "Max:", false);
 
             AddPresetOptions();
             AddColorOpions();
@@ -161,17 +166,14 @@ namespace Mandelbrot
 
             foreach (var scheme in schemes)
             {
-                ToolStripMenuItem menuItem = new ToolStripMenuItem()
+                System.Windows.Controls.ComboBoxItem menuItem = new System.Windows.Controls.ComboBoxItem()
                 {
-                    Name = scheme.ToString(),
-                    Size = new Size(152, 22),
-                    Text = scheme.ToString(),
-
+                    Name = scheme.ToString()
                 };
-                menuItem.Click += new EventHandler(this.ColorSelected);
 
-                this.colorsToolStripMenuItem.DropDownItems.Add(menuItem);
+                this.colorPicker.Items.Add(menuItem.Name);
             }
+            colorPicker.SelectedIndexChanged += new EventHandler(this.ColorSelected);
         }
 
 
@@ -182,7 +184,8 @@ namespace Mandelbrot
         {
             var goButton = new Button() { Text = "Go!" };
             goButton.Click += HandleGoButtonClick;
-            goButton.Location = new Point(400, 30);
+            goButton.Location = new Point(500, 30);
+            goButton.Width = 50;
 
             this.Controls.Add(goButton);
         }
@@ -227,6 +230,7 @@ namespace Mandelbrot
         private ToolStripMenuItem imageToolStripMenuItem;
         private ToolStripMenuItem ImageMenuItem;
         private ToolStripMenuItem presetToolStripMenuItem;
+        private ComboBox colorPicker;
         private ToolStripMenuItem colorsToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem userGuideToolStripMenuItem;
