@@ -144,7 +144,8 @@ namespace Mandelbrot
         private void CreateMandelbrotImage(MandelbrotForm form)
         {
             Graphics g = form.CreateGraphics();
-            g.DrawImage((Image)ImageDrawer.DrawImage(form.Height - imageOffset, form.Width, form.UserInputParameters), 0, imageOffset);
+            var image = (Image)ImageDrawer.DrawImage(form.Height - imageOffset, form.Width, form.UserInputParameters);
+            g.DrawImage(image, 0, imageOffset, image.Width, image.Height);
         }
 
         /// <summary>

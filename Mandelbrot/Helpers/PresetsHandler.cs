@@ -16,7 +16,7 @@ namespace Mandelbrot
                         CenterX = -1.7,
                         CenterY = -1.6,
                         Scale = 0.005,
-                        Max = 500,
+                        Max = 200,
                         ColorScheme = ColorSchemes.BlueGreen
                     }
                 }
